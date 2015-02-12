@@ -1,0 +1,10 @@
+<ion-view view-title="Persons">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.id}}">
+        <img ng-src="{{person.face}}">
+        <h2>{{person.name}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
