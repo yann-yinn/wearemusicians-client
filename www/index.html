@@ -21,12 +21,20 @@
     <!-- okc modules -->
 
     <script src="modules/okc/routerUiDebug/routerUiDebug.js"></script>
+
+
+
+
     <script src="modules/okc/persons/persons.js"></script>
+    <script src="modules/okc/persons/controllers/personsController.js"></script>
+    <script src="modules/okc/persons/services/personsServices.js"></script>
+
     <script src="modules/okc/account/account.js"></script>
-    <script src="modules/app.js"></script>
+    <script src="modules/okc/account/controllers/accountController.js"></script>
+
 
       <!-- main app's js -->
-
+      <script src="modules/okc/app/app.js"></script>
 
   </head>
   <body ng-app="app">
@@ -39,8 +47,6 @@
     </ion-nav-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
   </body>
