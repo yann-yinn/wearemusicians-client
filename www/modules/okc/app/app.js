@@ -19,7 +19,7 @@ angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
         });
     })
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 
         // create root default abstract tab with ui-router
         // all modules will provides "children" path for this abstract tab.
@@ -35,5 +35,14 @@ angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/persons');
 
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+            // Allow same origin resource loads.
+            'self',
+            // Allow loading from our assets domain.  Notice the difference between * and **.
+            'https://*.soundcloud.com/**'
+        ]);
+
     });
+
 
