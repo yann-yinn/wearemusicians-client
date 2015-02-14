@@ -1,9 +1,11 @@
 /**
- * Okc people module.
+ * Declaration of Okc people module
  *
  * Display list of persons
  */
-angular.module('okc.persons', [])
+angular.module('okc.persons', [
+    'ngResource'
+    ])
 
     .config(function($stateProvider, $urlRouterProvider) {
 
