@@ -1,0 +1,64 @@
+<ion-view view-title="Account">
+    <ion-content>
+
+
+        <form name="loginForm" novalidate>
+
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input
+                            type="text"
+                            ng-model="user.email"
+                            name="email"
+                            ng-minlength="3"
+                            required="">
+                </label>
+
+                <div ng-show="loginForm.$submitted || loginForm.email.$touched">
+                    <div ng-show="loginForm.email.$error.required">Tell us your name.</div>
+                </div>
+
+
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input
+                            type="password"
+                            name="password"
+                            ng-minlength="5"
+                            required=""
+                            ng-model="user.password">
+                </label>
+
+                <div ng-show="loginForm.$submitted || loginForm.password.$touched">
+                    <div ng-show="loginForm.password.$error.required">Password is required.</div>
+                </div>
+
+
+
+
+            </div>
+            <div class="padding">
+                <input
+                        class="button button-block button-positive"
+                        type="submit"
+                        ng-click="logIn(user)"
+                        value="save">
+
+                <!--
+                <button class="button button-block button-positive" ng-click="logIn(user)">
+                    Sign-In
+                </button>
+                -->
+                <!--
+                <p class="text-center">
+                    <a href="#/forgot-password">Forgot password</a>
+                </p>
+                -->
+            </div>
+
+            <pre>{{authentication.user | json}}</pre>
+        </form>
+
+    </ion-content>
+</ion-view>

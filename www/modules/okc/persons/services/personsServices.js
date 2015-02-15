@@ -1,8 +1,8 @@
 
 /**
- * A simple example service that returns some data.
+ * Get users from server
  */
-angular.module('okc.persons').factory('Persons', function($resource) {
-    return $resource('http://localhost:3333/api/users/:id', { id: '@id'});
-});
+angular.module('okc.persons').factory('Persons', ['$resource', 'config', function($resource, config) {
+    return $resource(config.server.getServerResourcesBaseUrl() + '/users/:id', { id: '@id'});
+}]);
 

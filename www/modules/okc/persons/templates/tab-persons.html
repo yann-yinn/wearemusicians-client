@@ -1,5 +1,9 @@
 <ion-view view-title="Persons">
   <ion-content>
+      <ion-refresher
+              pulling-text="Pull to refresh..."
+              on-refresh="doRefresh()">
+      </ion-refresher>
     <ion-list>
       <ion-item class="item-avatar" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person._id}}">
         <!--<img ng-src="{{person.face}}">-->

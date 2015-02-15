@@ -4,11 +4,11 @@
  * Display list of persons
  */
 angular.module('okc.persons', [
-    'ngResource'
+    'ngResource',
+    'okc.config'
     ])
 
-    .config(function($stateProvider, $urlRouterProvider) {
-
+    .config(['$stateProvider', function($stateProvider) {
 
         $stateProvider
 
@@ -31,6 +31,6 @@ angular.module('okc.persons', [
                 }
             })
 
-    });
+    }]);
 
 

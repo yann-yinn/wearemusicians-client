@@ -3,9 +3,9 @@
  *
  * Display list of persons
  */
-angular.module('okc.account', [])
+angular.module('okc.account', ['okc.persons'])
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider) {
 
         $stateProvider
 
@@ -15,6 +15,17 @@ angular.module('okc.account', [])
                     'tab-account': {
                         templateUrl: 'modules/okc/account/templates/tab-account.html',
                         controller: 'AccountCtrl'
+                    }
+                }
+
+            })
+
+            .state('tab.login', {
+                url: '/login',
+                views: {
+                    'tab-login': {
+                        templateUrl: 'modules/okc/account/templates/tab-login.html',
+                        controller: 'LoginCtrl'
                     }
                 }
 
