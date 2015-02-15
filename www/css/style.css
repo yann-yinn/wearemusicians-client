@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-input.ng-invalid-required {
+input.ng-invalid-required.ng-touched {
     border: solid red 1px;
 }

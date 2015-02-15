@@ -23,15 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="52" selection-start="271" selection-end="271" vertical-scroll-proportion="0.25577265" vertical-offset="0" max-vertical-offset="1080">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routerUiDebug.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/modules/okc/routerUiDebug/routerUiDebug.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,6 +36,15 @@
         <entry file="file://$PROJECT_DIR$/www/modules/okc/config/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="12" column="18" selection-start="302" selection-end="315" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="36" selection-start="79" selection-end="79" vertical-scroll-proportion="0.05970149" vertical-offset="0" max-vertical-offset="603">
               <folding />
             </state>
           </provider>
@@ -170,8 +170,8 @@
         <option value="$PROJECT_DIR$/www/modules/okc/account/templates/account-form.html" />
         <option value="$PROJECT_DIR$/www/modules/okc/app/templates/start.html" />
         <option value="$PROJECT_DIR$/www/modules/okc/account/controllers/accountController.js" />
-        <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/css/style.css" />
       </list>
     </option>
   </component>
@@ -701,16 +701,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+    <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="5" selection-start="48" selection-end="48" vertical-scroll-proportion="0.05970149" vertical-offset="0" max-vertical-offset="603">
+        <state line="8" column="52" selection-start="271" selection-end="271" vertical-scroll-proportion="0.25577265" vertical-offset="0" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="52" selection-start="271" selection-end="271" vertical-scroll-proportion="0.25577265" vertical-offset="0" max-vertical-offset="1080">
+        <state line="2" column="36" selection-start="79" selection-end="79" vertical-scroll-proportion="0.05970149" vertical-offset="0" max-vertical-offset="603">
           <folding />
         </state>
       </provider>
