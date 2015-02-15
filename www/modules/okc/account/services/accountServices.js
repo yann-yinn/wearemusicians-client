@@ -15,8 +15,7 @@ angular.module('okc.account').service('authentication', ['$http', 'config', '$st
     $http.post(url, {email:email, password:password})
 
       .success(_.bind(function(data, status, headers, config) {
-        console.log(data);
-        // store current user
+        // store current user.
         this.user = data;
         $state.go(redirection);
       }, this))
