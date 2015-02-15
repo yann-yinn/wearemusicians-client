@@ -25,6 +25,12 @@ angular.module('okc.account', ['okc.persons'])
         controller: 'LoginCtrl'
       })
 
+      .state('createAccount', {
+        url: '/create-account',
+        templateUrl: 'modules/okc/account/templates/account-form.html',
+        controller: 'createAccountCtrl'
+      })
+
       .state('logout', {
         url: '/logout',
         controller: ['authentication', function(authentication) {

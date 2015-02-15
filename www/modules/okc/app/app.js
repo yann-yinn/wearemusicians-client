@@ -18,13 +18,13 @@ angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
       }
     });
 
+    // redirect user to login / account creation, if he is not logged in.
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
-        if(!authentication.user && (toState.name != 'start' && toState.name != 'login')) {
+        if(!authentication.user && (toState.name != 'start' && toState.name != 'login' &&toState.name != 'createAccount')) {
           $location.path('start');
         }
       });
-
   })
 
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {

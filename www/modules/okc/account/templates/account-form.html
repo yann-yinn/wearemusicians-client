@@ -1,9 +1,10 @@
-<ion-view view-title="Account">
+<ion-view view-title="Create an account">
     <ion-content>
 
-        <form name="loginForm" novalidate>
+        <form name="accountForm" novalidate>
 
             <div class="list">
+
                 <label class="item item-input">
                     <span class="input-label">Email</span>
                     <input
@@ -14,8 +15,22 @@
                             required="">
                 </label>
 
-                <div ng-show="loginForm.$submitted || loginForm.email.$touched">
-                    <div ng-show="loginForm.email.$error.required">Email is required</div>
+                <div ng-show="accountForm.$submitted || accountForm.email.$touched">
+                    <div ng-show="accountForm.email.$error.required">Email is required.</div>
+                </div>
+
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input
+                            type="text"
+                            ng-model="user.name"
+                            name="name"
+                            ng-minlength="3"
+                            required="">
+                </label>
+
+                <div ng-show="accountForm.$submitted || accountForm.name.$touched">
+                    <div ng-show="accountForm.name.$error.required">Tell us your name.</div>
                 </div>
 
 
@@ -29,16 +44,17 @@
                             ng-model="user.password">
                 </label>
 
-                <div ng-show="loginForm.$submitted || loginForm.password.$touched">
-                    <div ng-show="loginForm.password.$error.required">Password is required.</div>
+                <div ng-show="accountForm.$submitted || accountForm.password.$touched">
+                    <div ng-show="accountForm.password.$error.required">Password is required.</div>
                 </div>
 
             </div>
+
             <div class="padding">
                 <input
                         class="button button-block button-positive"
                         type="submit"
-                        ng-click="logIn(user)"
+                        ng-click="savePerson(user)"
                         value="Sign in">
 
                 <!--
