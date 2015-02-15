@@ -1,10 +1,9 @@
 angular.module('okc.account')
 
     // display account profile
-    .controller('AccountCtrl', ['$scope',function($scope) {
-        $scope.settings = {
-            enableFriends: true
-        };
+    .controller('AccountCtrl', ['$scope','authentication', function($scope, authentication) {
+        $scope.authentication = authentication;
+
     }])
 
     // log a user to the server
@@ -18,14 +17,13 @@ angular.module('okc.account')
         };
 
         // triggered by click on the submit button on login form
-        // @see tab-login.html
+        // @see login-form.html
         $scope.logIn = function(user) {
             // do not post request if user did not fill its email or password
             if (!user.email || !user.password) {
-                console.log('abort login');
                 return;
             }
-            authentication.login(user.email, user.password);
+            authentication.login(user.email, user.password, 'tab.persons');
         }
 
     }]);

@@ -10,7 +10,7 @@ angular.module('okc.config', [])
 
             protocol: 'http',
             port: 3333,
-            host: 'localhost',
+            host: '192.168.0.18',
             resourcesBaseUrl: 'api',
 
             // generate server base url from above informations.

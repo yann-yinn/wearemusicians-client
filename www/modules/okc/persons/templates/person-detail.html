@@ -7,7 +7,9 @@ The Friends service returns an array of friend data
 
 <ion-view view-title="{{person.name}}">
   <ion-content class="padding">
-      <pre>{{person.name}}</pre>
+      <h2>{{person.name}}</h2>
+      <h4>{{person.email}}</h4>
+      <h4>{{person.password}}</h4>
 
       <ion-list>
           <ion-item class="item-souncloud" ng-repeat="soundcloud in person.soundcloud" type="item-text-wrap">

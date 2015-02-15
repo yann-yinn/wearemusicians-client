@@ -1,14 +1,13 @@
 <ion-view view-title="Account">
     <ion-content>
 
-
         <form name="loginForm" novalidate>
 
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Username</span>
                     <input
-                            type="text"
+                            type="email"
                             ng-model="user.email"
                             name="email"
                             ng-minlength="3"
@@ -34,16 +33,13 @@
                     <div ng-show="loginForm.password.$error.required">Password is required.</div>
                 </div>
 
-
-
-
             </div>
             <div class="padding">
                 <input
                         class="button button-block button-positive"
                         type="submit"
                         ng-click="logIn(user)"
-                        value="save">
+                        value="Sign in">
 
                 <!--
                 <button class="button button-block button-positive" ng-click="logIn(user)">
@@ -57,7 +53,6 @@
                 -->
             </div>
 
-            <pre>{{authentication.user | json}}</pre>
         </form>
 
     </ion-content>

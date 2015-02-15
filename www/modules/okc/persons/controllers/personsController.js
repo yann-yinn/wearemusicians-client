@@ -16,3 +16,5 @@ angular.module('okc.persons')
     .controller('PersonDetailCtrl', ['$scope', '$stateParams', 'Persons', function($scope, $stateParams, Persons) {
         $scope.person = Persons.get({ id: $stateParams.personId });
     }]);
+
+
