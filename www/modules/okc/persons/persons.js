@@ -12,7 +12,7 @@ angular.module('okc.persons', [
 
         $stateProvider
 
-            .state('tab.persons', {
+            .state('app.main.persons', {
                 url: '/persons',
                 views: {
                     'tab-persons': {
@@ -21,7 +21,7 @@ angular.module('okc.persons', [
                     }
                 }
             })
-            .state('tab.person-detail', {
+            .state('app.main.person-detail', {
                 url: '/persons/:personId',
                 views: {
                     'tab-persons': {

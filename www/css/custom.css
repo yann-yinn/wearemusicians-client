@@ -1,0 +1,35 @@
+/* Empty. Add your own CSS if you like */
+
+input.ng-invalid-required.ng-touched {
+    border: solid red 1px;
+}
+
+.onboard ion-content{
+    background-color: #333 !important;
+}
+
+.onboard ion-content h1,
+.onboard ion-content h2,
+.onboard ion-content h3,
+.onboard ion-content h4,
+.onboard ion-content p,
+.onboard ion-content div
+{
+
+}
+
+#onboard-presentation{
+    padding:2em;
+
+   text-align: center;
+}
+
+.bar-header {
+
+
+}
+
+.bar-header .title {
+    //color:white !important;
+    font-weight: bold;
+}

@@ -8,13 +8,19 @@ angular.module('okc.account')
   // display account profile
   .controller('createAccountCtrl', ['$scope', 'Persons', '$state', function($scope, Persons, $state) {
     $scope.message = 'hello';
+
+    $scope.user = {
+      email : '',
+      password: ''
+    };
+
     $scope.savePerson = function(user) {
       // do not submit form if some fields are not filled
       if (!user.email || !user.password || !user.name) {
         return;
       }
       Persons.save(user);
-      $state.go('start');
+      $state.go('app.onboard.home');
     }
   }])
 
@@ -35,7 +41,7 @@ angular.module('okc.account')
       if (!user.email || !user.password) {
         return;
       }
-      authentication.login(user.email, user.password, 'tab.persons');
+      authentication.login(user.email, user.password, 'app.main.persons');
     }
 
   }]);

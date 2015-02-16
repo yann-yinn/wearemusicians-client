@@ -1,4 +1,7 @@
-angular.module('routerUiDebug', []).run(['$rootScope',function($rootScope){
+/**
+ * log router-ui events.
+ */
+angular.module('okc.routerUiDebug', []).run(['$rootScope',function($rootScope){
 
     $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
         console.log('$stateChangeStart to '+toState.to+'- fired when the transition begins. toState,toParams : \n',toState, toParams);

@@ -18,7 +18,12 @@
  *
  * @see https://docs.angularjs.org/guide/module
  */
-angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
+angular.module('app', [
+    'ionic',
+    'okc.persons',
+    'okc.account',
+    'okc.routerUiDebug'
+  ])
 
   .run(function($ionicPlatform, $rootScope, authentication, $location) {
     $ionicPlatform.ready(function() {
@@ -42,7 +47,7 @@ angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
         if(!authentication.user && (toState.name != 'start' && toState.name != 'login' &&toState.name != 'createAccount')) {
-          $location.path('start');
+          //$location.path('start');
         }
       });
   })
@@ -53,39 +58,119 @@ angular.module('app', ['ionic', 'okc.persons', 'okc.account'])
   // @see ui-router module : https://github.com/angular-ui/ui-router
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 
+    // app : url "/"
+    // states relative to app presentation
+    //   app.onboard
+    // states relative to main app content
+    //   app.main
+
     // if none of the below states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
 
-      // setup an abstract state for the tabs directive
-      .state('home', {
-        url: "/",
-        controller: ['$state', 'authentication', function($state, authentication) {
-          // if user is logged in, redirect him to the first screen of our application
-          if (authentication.user) {
-            $state.go('tab.persons');
-          }
-          // else, send him to sign in / create account page.
-          else {
-            $state.go('start');
-          }
-        }]
-      })
-
-      // create root default abstract tab with ui-router
-      // all modules will provides "children" path for this abstract tab.
-      .state('tab', {
-        url: "/tab",
+      // Abstract root of our app. Set as abstract, we dont want this state
+      // to be transionned to. But it will be always "active" by default,
+      // so this is some kind of middleware for our states routing.
+      // All our states will be children of this states. As
+      // children are rendered inside parent state template, we need
+      // to provide here a template so that children can be rendered somewhere !
+      .state('app', {
         abstract: true,
-        templateUrl: "modules/okc/app/templates/tabs.html"
+        // children states templates will be inserted here :
+        template:'<ion-nav-view></ion-nav-view>'
       })
 
-      // setup an abstract state for the tabs directive
-      .state('start', {
-        url: "/start",
-        templateUrl: "modules/okc/app/templates/start.html"
-      });
+      // Abstract root of app.onboard.
+      .state('app.onboard', {
+        abstract: true,
+        // base url for children states url.
+        url: "/onboard",
+        // children states templates will be inserted here
+        templateUrl:'modules/okc/app/templates/onboard/onboard.html'
+      })
+
+      // update onboard.html, inserting step.1 html template when
+      // onboard/step-1 is the url.
+      // views is an object because when need to inform router UI of views
+      // we want to update in onboard.html
+      // In our case, we simply want to display step 1.
+      .state('app.onboard.home', {
+        url : "/home",
+        views: {
+          // this is the value of "name" attribute of ion-nav-view from parent state template.
+          'home': {
+            templateUrl: 'modules/okc/app/templates/onboard/onboard.home.html'
+          }
+        }
+      })
+
+    .state('app.onboard.signin', {
+      url : "/signin",
+      views: {
+        'signin': {
+          templateUrl: 'modules/okc/account/templates/login-form.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+    .state('app.onboard.signup', {
+
+        url : "/signup",
+        views: {
+          'signup': {
+            templateUrl: 'modules/okc/account/templates/account-form.html',
+            controller: 'createAccountCtrl'
+          }
+        }
+     })
+
+    // Abstract root of app.main
+    .state('app.main', {
+      abstract: true,
+      // base url for children states url.
+      url: "/main",
+      // children states templates will be inserted here
+      templateUrl:'modules/okc/app/templates/main/main.html'
+    });
+
+
+
+    // setup an abstract state for the tabs directive
+    /*
+     .state('home', {
+     url: "/home",
+     controller: ['$state', 'authentication', function($state, authentication) {
+     // if user is logged in, redirect him to the first screen of our application
+     if (authentication.user) {
+     $state.go('tab.persons');
+     }
+     // else, send him to sign in / create account page.
+     else {
+     $state.go('start');
+     }
+     }]
+     })
+     */
+
+    // create root default abstract tab with ui-router
+    // all modules will provides "children" path for this abstract tab.
+    /*
+     .state('tab', {
+     url: "/tab",
+     abstract: true,
+     templateUrl: "modules/okc/app/templates/tabs.html"
+     })
+     */
+
+    // setup an abstract state for the tabs directive
+    /*
+     .state('start', {
+     url: "/start",
+     templateUrl: "modules/okc/app/templates/start.html"
+     });
+     */
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.

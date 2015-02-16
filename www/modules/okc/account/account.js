@@ -7,9 +7,10 @@ angular.module('okc.account', ['okc.persons'])
 
   .config(function($stateProvider) {
 
+
     $stateProvider
 
-      .state('tab.account', {
+      .state('app.main.account', {
         url: '/account',
         views: {
           'tab-account': {
@@ -19,23 +20,6 @@ angular.module('okc.account', ['okc.persons'])
         }
       })
 
-      .state('login', {
-        url: '/login',
-        templateUrl: 'modules/okc/account/templates/login-form.html',
-        controller: 'LoginCtrl'
-      })
 
-      .state('createAccount', {
-        url: '/create-account',
-        templateUrl: 'modules/okc/account/templates/account-form.html',
-        controller: 'createAccountCtrl'
-      })
-
-      .state('logout', {
-        url: '/logout',
-        controller: ['authentication', function(authentication) {
-          authentication.logout();
-        }]
-      });
 
   });
