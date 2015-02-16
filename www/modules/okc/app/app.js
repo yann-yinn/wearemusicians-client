@@ -46,8 +46,8 @@ angular.module('app', [
     // If not, we redirect him to the login / create account page.
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
-        if(!authentication.user && (toState.name != 'start' && toState.name != 'login' &&toState.name != 'createAccount')) {
-          //$location.path('start');
+        if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
+          $location.path('app.onboard.home');
         }
       });
   })
@@ -65,7 +65,7 @@ angular.module('app', [
     //   app.main
 
     // if none of the below states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('main/persons');
 
     $stateProvider
 

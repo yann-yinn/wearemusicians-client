@@ -18,6 +18,10 @@ input.ng-invalid-required.ng-touched {
 
 }
 
+.onboard-home {
+    background : url('../img/band.jpg') no-repeat center;
+}
+
 #onboard-presentation{
     padding:2em;
 
