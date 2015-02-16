@@ -10,7 +10,7 @@ angular.module('okc.account').service('authentication', ['$http', 'config', '$st
 
   this.login = function(email, password, redirection) {
 
-    var url = config.server.getServerBaseUrl() + '/auth/login';
+    var url = config.serverUrl + '/auth/login';
 
     $http.post(url, {email:email, password:password})
 
@@ -27,7 +27,7 @@ angular.module('okc.account').service('authentication', ['$http', 'config', '$st
 
   this.logout = function(redirection) {
 
-    var url = config.server.getServerBaseUrl() + '/auth/logout';
+    var url = config.serverUrl + '/auth/logout';
 
     $http.get(url)
 

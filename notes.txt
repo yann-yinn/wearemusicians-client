@@ -1,4 +1,9 @@
+// create users
 curl -H 'Content-Type: application/json' -X POST --data '{"name":"yann", "email":"yann.boisselier@gmail.com", "password":"$2a$10$QbrsYbkHpHIeTK8jLlrV7OqZAzcfxAfP8YykGSCkM953if.rZIDly"}' localhost:3333/api/users
 curl -H 'Content-Type: application/json' -X POST --data '{"name":"Aurélie", "email":"aurelie@aurelie.fr", "password":"$2a$10$QbrsYbkHpHIeTK8jLlrV7OqZAzcfxAfP8YykGSCkM953if.rZIDly"}' localhost:3333/api/users
 curl -H 'Content-Type: application/json' -X POST --data '{"name":"Loïse", "email":"loise@loise.fr", "password":"$2a$10$QbrsYbkHpHIeTK8jLlrV7OqZAzcfxAfP8YykGSCkM953if.rZIDly"}' localhost:3333/api/users
 curl -H 'Content-Type: application/json' -X POST --data '{"name":"Samuel", "email":"samuel.hurel@tabasko-lab.com", "password":"$2a$10$QbrsYbkHpHIeTK8jLlrV7OqZAzcfxAfP8YykGSCkM953if.rZIDly"}' localhost:3333/api/users
+
+// login user
+curl -H 'Content-Type: application/json' -X POST --data '{"email":"yann.boisselier@gmail.com", "password":"hello"}' http://localhost:3333/auth/login
+
