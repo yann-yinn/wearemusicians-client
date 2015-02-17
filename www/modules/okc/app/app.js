@@ -19,11 +19,10 @@
  * @see https://docs.angularjs.org/guide/module
  */
 angular.module('app', [
-    //'okc.routerUiDebug',
+    'okc.routerUiDebug',
     'ionic',
     'drunkenPanda.authentication',
-    'okc.persons',
-    'okc.account'
+    'drunkenPanda.user'
   ])
 
   .run(function($ionicPlatform, $rootScope, authentication, $location) {
@@ -59,14 +58,8 @@ angular.module('app', [
   // @see ui-router module : https://github.com/angular-ui/ui-router
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 
-    // app : url "/"
-    // states relative to app presentation
-    //   app.onboard
-    // states relative to main app content
-    //   app.main
-
     // if none of the below states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('main/persons');
+    $urlRouterProvider.otherwise('/onboard/home');
 
     $stateProvider
 
@@ -81,6 +74,16 @@ angular.module('app', [
         // children states templates will be inserted here :
         template:'<ion-nav-view></ion-nav-view>'
       })
+
+      // Abstract root of app.main
+      .state('app.main', {
+        abstract: true,
+        // base url for children states url.
+        url: "/main",
+        // children states templates will be inserted here
+        templateUrl:'modules/okc/app/templates/main/main.html'
+      })
+
 
       // Abstract root of app.onboard.
       .state('app.onboard', {
@@ -106,17 +109,17 @@ angular.module('app', [
         }
       })
 
-    .state('app.onboard.signin', {
-      url : "/signin",
-      views: {
-        'signin': {
-          templateUrl: 'modules/drunkenpanda/authentication/templates/signInForm.html',
-          controller: 'signInCtrl'
+      .state('app.onboard.signin', {
+        url : "/signin",
+        views: {
+          'signin': {
+            templateUrl: 'modules/drunkenpanda/authentication/templates/signInForm.html',
+            controller: 'signInCtrl'
+          }
         }
-      }
-    })
+      })
 
-    .state('app.onboard.signup', {
+      .state('app.onboard.signup', {
 
         url : "/signup",
         views: {
@@ -125,53 +128,8 @@ angular.module('app', [
             controller: 'createAccountCtrl'
           }
         }
-     })
+      })
 
-    // Abstract root of app.main
-    .state('app.main', {
-      abstract: true,
-      // base url for children states url.
-      url: "/main",
-      // children states templates will be inserted here
-      templateUrl:'modules/okc/app/templates/main/main.html'
-    });
-
-
-
-    // setup an abstract state for the tabs directive
-    /*
-     .state('home', {
-     url: "/home",
-     controller: ['$state', 'authentication', function($state, authentication) {
-     // if user is logged in, redirect him to the first screen of our application
-     if (authentication.user) {
-     $state.go('tab.persons');
-     }
-     // else, send him to sign in / create account page.
-     else {
-     $state.go('start');
-     }
-     }]
-     })
-     */
-
-    // create root default abstract tab with ui-router
-    // all modules will provides "children" path for this abstract tab.
-    /*
-     .state('tab', {
-     url: "/tab",
-     abstract: true,
-     templateUrl: "modules/okc/app/templates/tabs.html"
-     })
-     */
-
-    // setup an abstract state for the tabs directive
-    /*
-     .state('start', {
-     url: "/start",
-     templateUrl: "modules/okc/app/templates/start.html"
-     });
-     */
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.

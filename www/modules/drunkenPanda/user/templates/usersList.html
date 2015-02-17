@@ -5,9 +5,8 @@
               on-refresh="doRefresh()">
       </ion-refresher>
     <ion-list>
-      <ion-item class="item-avatar" ng-repeat="person in persons" type="item-text-wrap" href="#/main/persons/{{person.uuid}}">
-        <!--<img ng-src="{{person.face}}">-->
-        <h2>{{person.name}}</h2>
+      <ion-item class="item-avatar" ng-repeat="user in users" type="item-text-wrap" href="#/main/users/{{user.uuid}}">
+        <h2>{{user.name}}</h2>
       </ion-item>
     </ion-list>
   </ion-content>

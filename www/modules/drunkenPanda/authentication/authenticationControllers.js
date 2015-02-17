@@ -15,7 +15,8 @@ angular.module('drunkenPanda.authentication')
       if (!user.email || !user.password) {
         return;
       }
-      authentication.signIn(user.email, user.password, 'app.main.persons');
+      //@fixme dependance "app.main.users" state du module user
+      authentication.signIn(user.email, user.password, 'app.main.users');
     }
 
   }]);
