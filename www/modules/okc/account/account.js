@@ -3,19 +3,24 @@
  *
  * Display list of persons
  */
-angular.module('okc.account', ['okc.persons'])
+angular.module('okc.account', [
+    'okc.persons',
+    'drunkenPanda.authentication'
+  ])
 
   .config(function($stateProvider) {
 
-
     $stateProvider
 
-      .state('app.main.account', {
-        url: '/account',
+      .state('app.main.me', {
+        url: '/me',
         views: {
           'tab-account': {
-            templateUrl: 'modules/okc/account/templates/tab-account.html',
-            controller: 'AccountCtrl'
+            templateUrl: 'modules/okc/account/templates/me.html',
+            controller: 'meCtrl',
+            resolve: {
+
+            }
           }
         }
       })

@@ -19,10 +19,11 @@
  * @see https://docs.angularjs.org/guide/module
  */
 angular.module('app', [
+    //'okc.routerUiDebug',
     'ionic',
+    'drunkenPanda.authentication',
     'okc.persons',
-    'okc.account',
-    'okc.routerUiDebug'
+    'okc.account'
   ])
 
   .run(function($ionicPlatform, $rootScope, authentication, $location) {
@@ -47,7 +48,7 @@ angular.module('app', [
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
         if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
-          $location.path('app.onboard.home');
+          //$location.path('app.onboard.home');
         }
       });
   })
@@ -109,8 +110,8 @@ angular.module('app', [
       url : "/signin",
       views: {
         'signin': {
-          templateUrl: 'modules/okc/account/templates/login-form.html',
-          controller: 'LoginCtrl'
+          templateUrl: 'modules/drunkenpanda/authentication/templates/signInForm.html',
+          controller: 'signInCtrl'
         }
       }
     })
@@ -120,7 +121,7 @@ angular.module('app', [
         url : "/signup",
         views: {
           'signup': {
-            templateUrl: 'modules/okc/account/templates/account-form.html',
+            templateUrl: 'modules/drunkenpanda/authentication/templates/signUpForm.html',
             controller: 'createAccountCtrl'
           }
         }
