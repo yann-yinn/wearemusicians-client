@@ -8,7 +8,7 @@ angular.module('drunkenPanda.authentication')
         url: '/signin',
         views: {
           'me': {
-            templateUrl: 'modules/drukenPanda/authentication/templates/signInForm.html',
+            templateUrl: 'modules/drunkenPanda/authentication/templates/signInForm.html',
             controller: 'signInCtrl'
           }
         }
