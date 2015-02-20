@@ -6,22 +6,18 @@ angular.module('drunkenPanda.user')
   }])
 
   // create a new user from signUp form
-  .controller('createAccountCtrl', ['$scope', 'user', '$state', function($scope, user, $state) {
-    $scope.message = 'hello';
+  .controller('signUpCtrl', ['$scope', 'user', '$state', function($scope, userService, $state) {
 
     $scope.user = {
       email : '',
       password: ''
     };
 
-    $scope.savePerson = function(user) {
-      // do not submit form if some fields are not filled
-      if (!user.email || !user.password || !user.name) {
-        return;
-      }
-      user.save(user);
+    $scope.createUser = function(user) {
+      userService.save(user);
       $state.go('app.onboard.home');
-    }
+    };
+
   }])
 
   .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {

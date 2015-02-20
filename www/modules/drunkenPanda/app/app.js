@@ -19,13 +19,15 @@
  * @see https://docs.angularjs.org/guide/module
  */
 angular.module('app', [
-    //'drunkenPanda.routerUiDebug',
     'ionic',
+    //'drunkenPanda.routerUiDebug',
+    'drunkenPanda.config',
     'drunkenPanda.authentication',
-    'drunkenPanda.user'
+    'drunkenPanda.user',
+    'drunkenPanda.onboard'
   ])
 
-  .run(function($ionicPlatform, $rootScope, authentication, $location) {
+  .run(function($ionicPlatform, $rootScope, authentication, $location, config) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -56,7 +58,7 @@ angular.module('app', [
   // states machines allow ionic module to build automatically a "back" button
   // and are far more flexible than native ng-route from Angular js.
   // @see ui-router module : https://github.com/angular-ui/ui-router
-  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config) {
 
     // if none of the below states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/onboard/home');
@@ -78,64 +80,19 @@ angular.module('app', [
       // Abstract root of app.main
       .state('app.main', {
         abstract: true,
-        // base url for children states url.
-        url: "/main",
         // children states templates will be inserted here
-        templateUrl:'modules/drunkenPanda/app/templates/main/main.html'
-      })
-
-
-      // Abstract root of app.onboard.
-      .state('app.onboard', {
-        abstract: true,
-        // base url for children states url.
-        url: "/onboard",
-        // children states templates will be inserted here
-        templateUrl:'modules/drunkenPanda/app/templates/onboard/onboard.html'
-      })
-
-      // update onboard.html, inserting step.1 html template when
-      // onboard/step-1 is the url.
-      // views is an object because when need to inform router UI of views
-      // we want to update in onboard.html
-      // In our case, we simply want to display step 1.
-      .state('app.onboard.home', {
-        url : "/home",
-        views: {
-          // this is the value of "name" attribute of ion-nav-view from parent state template.
-          'home': {
-            templateUrl: 'modules/drunkenPanda/app/templates/onboard/onboard.home.html'
-          }
-        }
-      })
-
-      .state('app.onboard.signin', {
-        url : "/signin",
-        views: {
-          'signin': {
-            templateUrl: 'modules/drunkenpanda/authentication/templates/signInForm.html',
-            controller: 'signInCtrl'
-          }
-        }
-      })
-
-      .state('app.onboard.signup', {
-
-        url : "/signup",
-        views: {
-          'signup': {
-            templateUrl: 'modules/drunkenpanda/authentication/templates/signUpForm.html',
-            controller: 'createAccountCtrl'
-          }
-        }
-      })
-
+        templateUrl:'modules/drunkenPanda/app/templates/main.html'
+      });
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
       'self',
       // Allow loading from soundcloud domain.  Notice the difference between * and **.
-      'https://*.soundcloud.com/**'
+      'https://*.soundcloud.com/**',
+
+      // just in case, allow access to our demo server for now.
+      config.serverUrl + '/**'
+
     ]);
 
   });

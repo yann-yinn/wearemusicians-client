@@ -35,4 +35,14 @@ angular.module('drunkenPanda.user')
         }
       })
 
+      .state('app.main.signup', {
+
+        url : "/users/signup",
+        views: {
+          'signup': {
+            templateUrl: 'modules/drunkenpanda/user/templates/signUpForm.html'
+          }
+        }
+      })
+
   });
