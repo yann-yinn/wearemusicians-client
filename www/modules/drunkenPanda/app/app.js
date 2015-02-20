@@ -19,7 +19,7 @@
  * @see https://docs.angularjs.org/guide/module
  */
 angular.module('app', [
-    'drunkenPanda.routerUiDebug',
+    //'drunkenPanda.routerUiDebug',
     'ionic',
     'drunkenPanda.authentication',
     'drunkenPanda.user'
