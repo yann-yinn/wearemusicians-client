@@ -11,7 +11,7 @@ Display a list of all users
               on-refresh="doRefresh()">
       </ion-refresher>
     <ion-list>
-      <ion-item class="item-avatar" ng-repeat="user in users" type="item-text-wrap" href="#/main/users/{{user.id}}">
+      <ion-item class="item-avatar" ng-repeat="user in users" type="item-text-wrap" ui-sref="app.main.userDetail({userId: user.id})">
         <h2>{{user.name}}</h2>
       </ion-item>
     </ion-list>
