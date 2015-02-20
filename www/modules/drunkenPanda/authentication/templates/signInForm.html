@@ -4,7 +4,14 @@
 
     <ion-content class="padding">
 
-        <form name="loginForm" novalidate>
+        <!--
+        $valid allow us to check if form is valid, and call signIn function
+        only if form is valid
+        novalidate disabled html5 validation
+        -->
+        <form name="signInForm"
+              ng-submit="signInForm.$valid && signIn(user)"
+              novalidate>
 
             <div class="list">
                 <label class="item item-input">
@@ -14,11 +21,11 @@
                             ng-model="user.email"
                             name="email"
                             ng-minlength="3"
-                            required="">
+                            required>
                 </label>
 
-                <div ng-show="loginForm.$submitted || loginForm.email.$touched">
-                    <div ng-show="loginForm.email.$error.required">Email is required</div>
+                <div ng-show="signInForm.$submitted || signInForm.email.$touched">
+                    <div ng-show="signInForm.email.$error.required">Email is required</div>
                 </div>
 
 
@@ -28,12 +35,12 @@
                             type="password"
                             name="password"
                             ng-minlength="5"
-                            required=""
+                            required
                             ng-model="user.password">
                 </label>
 
-                <div ng-show="loginForm.$submitted || loginForm.password.$touched">
-                    <div ng-show="loginForm.password.$error.required">Password is required.</div>
+                <div ng-show="signInForm.$submitted || signInForm.password.$touched">
+                    <div ng-show="signInForm.password.$error.required">Password is required.</div>
                 </div>
 
             </div>
@@ -41,7 +48,6 @@
                 <input
                         class="button button-block button-positive"
                         type="submit"
-                        ng-click="signIn(user)"
                         value="Sign in">
 
             </div>

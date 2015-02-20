@@ -7,8 +7,8 @@ angular.module('drunkenPanda.authentication')
       .state('app.main.signIn', {
         url: '/signin',
         views: {
-          'tab-account': {
-            templateUrl: 'modules/okc/account/templates/tab-account.html',
+          'me': {
+            templateUrl: 'modules/drukenPanda/authentication/templates/signInForm.html',
             controller: 'signInCtrl'
           }
         }

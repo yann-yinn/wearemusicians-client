@@ -8,7 +8,7 @@ angular.module('drunkenPanda.user')
         url: '/me',
         views: {
           'me': {
-            templateUrl: 'modules/okc/account/templates/me.html',
+            templateUrl: 'modules/DrunkenPanda/user/templates/me.html',
             controller: 'meCtrl'
           }
         }

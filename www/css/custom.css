@@ -1,8 +1,15 @@
 /* Empty. Add your own CSS if you like */
 
-input.ng-invalid-required.ng-touched {
-    border: solid red 1px;
+/* for INVAlID form fields */
+.ng-invalid.ng-dirty{
+    /*background:#FA787E;*/
 }
+
+/* for  VALID form fields */
+.ng-valid.ng-dirty{
+    /*background:#FAFA89;*/
+}
+
 
 .onboard ion-content{
     background-color: #333 !important;

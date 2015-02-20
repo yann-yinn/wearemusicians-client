@@ -19,7 +19,7 @@
  * @see https://docs.angularjs.org/guide/module
  */
 angular.module('app', [
-    'okc.routerUiDebug',
+    'drunkenPanda.routerUiDebug',
     'ionic',
     'drunkenPanda.authentication',
     'drunkenPanda.user'
@@ -81,7 +81,7 @@ angular.module('app', [
         // base url for children states url.
         url: "/main",
         // children states templates will be inserted here
-        templateUrl:'modules/okc/app/templates/main/main.html'
+        templateUrl:'modules/drunkenPanda/app/templates/main/main.html'
       })
 
 
@@ -91,7 +91,7 @@ angular.module('app', [
         // base url for children states url.
         url: "/onboard",
         // children states templates will be inserted here
-        templateUrl:'modules/okc/app/templates/onboard/onboard.html'
+        templateUrl:'modules/drunkenPanda/app/templates/onboard/onboard.html'
       })
 
       // update onboard.html, inserting step.1 html template when
@@ -104,7 +104,7 @@ angular.module('app', [
         views: {
           // this is the value of "name" attribute of ion-nav-view from parent state template.
           'home': {
-            templateUrl: 'modules/okc/app/templates/onboard/onboard.home.html'
+            templateUrl: 'modules/drunkenPanda/app/templates/onboard/onboard.home.html'
           }
         }
       })

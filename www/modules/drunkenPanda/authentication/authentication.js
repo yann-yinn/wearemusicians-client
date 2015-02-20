@@ -5,5 +5,5 @@
  *
  */
 angular.module('drunkenPanda.authentication', [
-  'okc.config'
+  'drunkenPanda.config'
 ]);
