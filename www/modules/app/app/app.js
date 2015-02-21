@@ -60,10 +60,13 @@ angular.module('app', [
   // states machines allow ionic module to build automatically a "back" button
   // and are far more flexible than native ng-route from Angular js.
   // @see ui-router module : https://github.com/angular-ui/ui-router
-  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config) {
+  .config([
+    '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 'config', '$translateProvider',
+    function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config, $translateProvider) {
 
     // if none of the below states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/onboard/home');
+    // for now, redirect to a 404 state, to let us know something goes wrong.
+    $urlRouterProvider.otherwise('/not-found');
 
     $stateProvider
 
@@ -77,6 +80,13 @@ angular.module('app', [
         abstract: true,
         // children states templates will be inserted here :
         template:'<ion-nav-view></ion-nav-view>'
+      })
+
+      // route not found will get here.
+      .state('app.notFound', {
+        url: '/not-found',
+        // children states templates will be inserted here
+        template:'State not found'
       })
 
       // Abstract root of app.main
@@ -97,7 +107,10 @@ angular.module('app', [
 
     ]);
 
-  });
+
+    $translateProvider.preferredLanguage('fr');
+
+  }]);
 
 
 
