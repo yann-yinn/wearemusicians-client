@@ -29,7 +29,9 @@ angular.module('app', [
     'app.onboard'
   ])
 
-  .run(function($ionicPlatform, $rootScope, authentication, $location, config) {
+  .run([
+    '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config',
+    function($ionicPlatform, $rootScope, authentication, $location, config) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -54,7 +56,7 @@ angular.module('app', [
           //$location.path('app.onboard.home');
         }
       });
-  })
+  }])
 
   // create our states; this is some kind of advanced router for our app.
   // states machines allow ionic module to build automatically a "back" button
