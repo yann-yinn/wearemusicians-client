@@ -4,6 +4,6 @@
  * Sign in, sign up, sign out from drunken panda server.
  *
  */
-angular.module('drunkenPanda.authentication', [
-  'drunkenPanda.config'
+angular.module('app.authentication', [
+  'app.config'
 ]);

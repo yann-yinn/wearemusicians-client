@@ -1,4 +1,4 @@
-angular.module('drunkenPanda.authentication')
+angular.module('app.authentication')
 
   // log a user to the server
   .controller('signInCtrl', ['$scope', 'authentication', function($scope, authentication) {

@@ -1,4 +1,4 @@
-angular.module('drunkenPanda.user')
+angular.module('app.user')
 
   // display my account informations
   .controller('meCtrl', ['$scope', 'authentication', function($scope, authentication) {

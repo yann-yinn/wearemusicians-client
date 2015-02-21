@@ -1,7 +1,7 @@
 /**
  * Get users from server
  */
-angular.module('drunkenPanda.authentication')
+angular.module('app.authentication')
 
   .service('authentication', ['$http', 'config', '$state', function($http, config, $state) {
 

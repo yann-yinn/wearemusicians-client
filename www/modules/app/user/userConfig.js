@@ -1,4 +1,4 @@
-angular.module('drunkenPanda.user')
+angular.module('app.user')
 
   .config(function($stateProvider) {
 
@@ -8,7 +8,7 @@ angular.module('drunkenPanda.user')
         url: '/me',
         views: {
           'me': {
-            templateUrl: 'modules/DrunkenPanda/user/templates/me.html',
+            templateUrl: 'modules/app/user/templates/me.html',
             controller: 'meCtrl'
           }
         }
@@ -18,7 +18,7 @@ angular.module('drunkenPanda.user')
         url: '/users',
         views: {
           'usersList': {
-            templateUrl: 'modules/drunkenPanda/user/templates/usersList.html',
+            templateUrl: 'modules/app/user/templates/usersList.html',
             controller: 'usersListCtrl'
           }
         }
@@ -29,7 +29,7 @@ angular.module('drunkenPanda.user')
         // replace usersList view content with userDetail.html content
         views: {
           'usersList': {
-            templateUrl: 'modules/drunkenPanda/user/templates/userDetail.html',
+            templateUrl: 'modules/app/user/templates/userDetail.html',
             controller: 'userDetailCtrl'
           }
         }
@@ -40,7 +40,7 @@ angular.module('drunkenPanda.user')
         url : "/users/signup",
         views: {
           'signup': {
-            templateUrl: 'modules/drunkenpanda/user/templates/signUpForm.html'
+            templateUrl: 'modules/app/user/templates/signUpForm.html'
           }
         }
       })

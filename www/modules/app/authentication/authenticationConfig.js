@@ -1,4 +1,4 @@
-angular.module('drunkenPanda.authentication')
+angular.module('app.authentication')
 
   .config(function($stateProvider) {
 
@@ -8,7 +8,7 @@ angular.module('drunkenPanda.authentication')
         url: '/signin',
         views: {
           'me': {
-            templateUrl: 'modules/drunkenPanda/authentication/templates/signInForm.html',
+            templateUrl: 'modules/app/authentication/templates/signInForm.html',
             controller: 'signInCtrl'
           }
         }

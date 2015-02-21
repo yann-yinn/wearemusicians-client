@@ -6,6 +6,8 @@
  */
 
 /**
+ * Master module, calling other modules.
+ *
  * angular.module object is a global place for creating, registering and retrieving Angular modules.
  * 'app' is the name of this angular module (also set in a <body> attribute in index.html)
  * the 2nd parameter is an array of required modules.
@@ -20,11 +22,11 @@
  */
 angular.module('app', [
     'ionic',
-    //'drunkenPanda.routerUiDebug',
-    'drunkenPanda.config',
-    'drunkenPanda.authentication',
-    'drunkenPanda.user',
-    'drunkenPanda.onboard'
+    //'app.routerUiDebug', // display ui-router events
+    'app.config',
+    'app.authentication',
+    'app.user',
+    'app.onboard'
   ])
 
   .run(function($ionicPlatform, $rootScope, authentication, $location, config) {
@@ -81,7 +83,7 @@ angular.module('app', [
       .state('app.main', {
         abstract: true,
         // children states templates will be inserted here
-        templateUrl:'modules/drunkenPanda/app/templates/main.html'
+        templateUrl:'modules/app/app/templates/main.html'
       });
 
     $sceDelegateProvider.resourceUrlWhitelist([

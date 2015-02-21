@@ -1,4 +1,4 @@
-angular.module('drunkenPanda.onboard').config(function($stateProvider) {
+angular.module('app.onboard').config(function($stateProvider) {
 
   $stateProvider
 
@@ -8,7 +8,7 @@ angular.module('drunkenPanda.onboard').config(function($stateProvider) {
       // base url for children states url.
       url: "/onboard",
       // children states templates will be inserted here
-      templateUrl:'modules/drunkenPanda/onboard/templates/onboard.html'
+      templateUrl:'modules/app/onboard/templates/onboard.html'
     })
 
     // update onboard.html, inserting step.1 html template when
@@ -21,7 +21,7 @@ angular.module('drunkenPanda.onboard').config(function($stateProvider) {
       views: {
         // this is the value of "name" attribute of ion-nav-view from parent state template.
         'home': {
-          templateUrl: 'modules/drunkenPanda/onboard/templates/onboard.home.html'
+          templateUrl: 'modules/app/onboard/templates/onboard.home.html'
         }
       }
     })
@@ -30,7 +30,7 @@ angular.module('drunkenPanda.onboard').config(function($stateProvider) {
       url : "/signin",
       views: {
         'signin': {
-          templateUrl: 'modules/drunkenpanda/authentication/templates/signInForm.html',
+          templateUrl: 'modules/app/authentication/templates/signInForm.html',
           controller: 'signInCtrl'
         }
       }
@@ -40,7 +40,7 @@ angular.module('drunkenPanda.onboard').config(function($stateProvider) {
       url : "/signup",
       views: {
         'signup': {
-          templateUrl: 'modules/drunkenpanda/user/templates/signUpForm.html'
+          templateUrl: 'modules/app/user/templates/signUpForm.html'
         }
       }
     });
