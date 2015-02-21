@@ -25,8 +25,8 @@ angular.module('drunkenPanda.user')
     $scope.users = user.query();
 
     $scope.doRefresh = function() {
-      $scope.persons = user.query();
-      $scope.persons.$promise.finally(function() {
+      $scope.users = user.query();
+      $scope.users.$promise.finally(function() {
         $scope.$broadcast('scroll.refreshComplete');
       });
 
