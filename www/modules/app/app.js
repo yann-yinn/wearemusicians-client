@@ -53,7 +53,7 @@ angular.module('app', [
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
         if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
-          //$location.path('app.onboard.home');
+          $location.path('app.onboard.home');
         }
       });
   }])
@@ -68,7 +68,7 @@ angular.module('app', [
 
     // if none of the below states are matched, use this as the fallback
     // for now, redirect to a 404 state, to let us know something goes wrong.
-    $urlRouterProvider.otherwise('/not-found');
+    $urlRouterProvider.otherwise('/users');
 
     $stateProvider
 
@@ -95,7 +95,7 @@ angular.module('app', [
       .state('app.main', {
         abstract: true,
         // children states templates will be inserted here
-        templateUrl:'modules/app/app/templates/main.html'
+        templateUrl:'modules/app/templates/main.html'
       });
 
     $sceDelegateProvider.resourceUrlWhitelist([

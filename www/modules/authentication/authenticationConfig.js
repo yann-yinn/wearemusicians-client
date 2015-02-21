@@ -8,7 +8,7 @@ angular.module('app.authentication')
         url: '/signin',
         views: {
           'me': {
-            templateUrl: 'modules/app/authentication/templates/signInForm.html',
+            templateUrl: 'modules/authentication/templates/signInForm.html',
             controller: 'signInCtrl'
           }
         }

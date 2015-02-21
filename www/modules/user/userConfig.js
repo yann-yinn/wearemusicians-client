@@ -8,7 +8,7 @@ angular.module('app.user')
         url: '/me',
         views: {
           'me': {
-            templateUrl: 'modules/app/user/templates/me.html',
+            templateUrl: 'modules/user/templates/me.html',
             controller: 'meCtrl'
           }
         }
@@ -18,7 +18,7 @@ angular.module('app.user')
         url: '/users',
         views: {
           'usersList': {
-            templateUrl: 'modules/app/user/templates/usersList.html',
+            templateUrl: 'modules/user/templates/usersList.html',
             controller: 'usersListCtrl'
           }
         }
@@ -29,7 +29,7 @@ angular.module('app.user')
         // replace usersList view content with userDetail.html content
         views: {
           'usersList': {
-            templateUrl: 'modules/app/user/templates/userDetail.html',
+            templateUrl: 'modules/user/templates/userDetail.html',
             controller: 'userDetailCtrl'
           }
         }
@@ -40,7 +40,7 @@ angular.module('app.user')
         url : "/users/signup",
         views: {
           'signup': {
-            templateUrl: 'modules/app/user/templates/signUpForm.html'
+            templateUrl: 'modules/user/templates/signUpForm.html'
           }
         }
       })

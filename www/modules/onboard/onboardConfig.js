@@ -8,7 +8,7 @@ angular.module('app.onboard').config(['$stateProvider', '$translateProvider', fu
       // base url for children states url.
       url: "/onboard",
       // children states templates will be inserted here
-      templateUrl:'modules/app/onboard/templates/onboard.html'
+      templateUrl:'modules/onboard/templates/onboard.html'
     })
 
     // update onboard.html, inserting step.1 html template when
@@ -21,7 +21,7 @@ angular.module('app.onboard').config(['$stateProvider', '$translateProvider', fu
       views: {
         // this is the value of "name" attribute of ion-nav-view from parent state template.
         'home': {
-          templateUrl: 'modules/app/onboard/templates/onboard.home.html'
+          templateUrl: 'modules/onboard/templates/onboard.home.html'
         }
       }
     })
@@ -30,7 +30,7 @@ angular.module('app.onboard').config(['$stateProvider', '$translateProvider', fu
       url : "/signin",
       views: {
         'signin': {
-          templateUrl: 'modules/app/authentication/templates/signInForm.html',
+          templateUrl: 'modules/authentication/templates/signInForm.html',
           controller: 'signInCtrl'
         }
       }
@@ -40,7 +40,7 @@ angular.module('app.onboard').config(['$stateProvider', '$translateProvider', fu
       url : "/signup",
       views: {
         'signup': {
-          templateUrl: 'modules/app/user/templates/signUpForm.html'
+          templateUrl: 'modules/user/templates/signUpForm.html'
         }
       }
     });
