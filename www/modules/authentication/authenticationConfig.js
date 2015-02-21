@@ -1,6 +1,8 @@
 angular.module('app.authentication')
 
-  .config(function($stateProvider) {
+  .config([
+    '$stateProvider','$translateProvider',
+    function($stateProvider, $translateProvider) {
 
     $stateProvider
 
@@ -12,6 +14,16 @@ angular.module('app.authentication')
             controller: 'signInCtrl'
           }
         }
-      })
+      });
 
-  });
+    $translateProvider.translations('en', {
+      AUTHENTICATION_SIGNOUT: "Sign out",
+      AUTHENTICATION_SIGNIN: "Sign in"
+    });
+
+    $translateProvider.translations('fr', {
+      AUTHENTICATION_SIGNOUT: "Se déconnecter",
+      AUTHENTICATION_SIGNIN: "Se connecter"
+    });
+
+  }]);

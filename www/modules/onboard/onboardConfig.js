@@ -1,4 +1,6 @@
-angular.module('app.onboard').config(['$stateProvider', '$translateProvider', function($stateProvider, $translateProvider) {
+angular.module('app.onboard').config(
+  ['$stateProvider', '$translateProvider',
+   function($stateProvider, $translateProvider) {
 
   $stateProvider
 
@@ -46,17 +48,19 @@ angular.module('app.onboard').config(['$stateProvider', '$translateProvider', fu
     });
 
   $translateProvider.translations('en', {
-    TITLE: 'Hello',
-    FOO: 'This is a paragraph.',
-    BUTTON_LANG_EN: 'english',
-    BUTTON_LANG_DE: 'german'
+    ONBOARD_USER_SIGNUP_BUTTON: "New user ? sign up !",
+    ONBOARD_USER_SIGNIN_BUTTON: "Sign in",
+    ONBOARD_USER_SIGNIN_TAB_TITLE: 'Sign in',
+    ONBOARD_USER_SIGNUP_TAB_TITLE: 'Sign up',
+    ONBOARD_HOME: 'Home'
   });
 
-  $translateProvider.translations('de', {
-    TITLE: 'Hallo',
-    FOO: 'Dies ist ein Paragraph.',
-    BUTTON_LANG_EN: 'englisch',
-    BUTTON_LANG_DE: 'deutsch'
+  $translateProvider.translations('fr', {
+    ONBOARD_USER_SIGNUP_BUTTON: "Nouvel utilisateur ? Inscrivez vous !",
+    ONBOARD_USER_SIGNIN_BUTTON: "Se connecter",
+    ONBOARD_USER_SIGNIN_TAB_TITLE: 'Se connecter',
+    ONBOARD_USER_SIGNUP_TAB_TITLE: 'Créer un compte',
+    ONBOARD_HOME: 'Accueil'
   });
 
 

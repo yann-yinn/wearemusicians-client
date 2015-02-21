@@ -1,6 +1,8 @@
 angular.module('app.user')
 
-  .config(function($stateProvider) {
+  .config([
+    '$stateProvider', '$translateProvider',
+    function($stateProvider, $translateProvider) {
 
     $stateProvider
 
@@ -43,6 +45,7 @@ angular.module('app.user')
             templateUrl: 'modules/user/templates/signUpForm.html'
           }
         }
-      })
+      });
 
-  });
+
+  }]);

@@ -2,18 +2,18 @@
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
     <!-- Welcome homepage -->
-    <ion-tab title="Home" icon-off="ion-ios7-home-outline" icon-on="ion-ios7-home" ui-sref="app.onboard.home">
+    <ion-tab title="{{'ONBOARD_HOME' | translate}}" icon-off="ion-ios7-home-outline" icon-on="ion-ios7-home" ui-sref="app.onboard.home">
         <ion-nav-view name="home"></ion-nav-view>
     </ion-tab>
 
     <!-- Sign In -->
-    <ion-tab title="Sign in" icon-off="ion-ios7-person-outline" icon-on="ion-ios7-person" ui-sref="app.onboard.signin">
+    <ion-tab title="{{'ONBOARD_USER_SIGNIN_TAB_TITLE' | translate}}" icon-off="ion-ios7-person-outline" icon-on="ion-ios7-person" ui-sref="app.onboard.signin">
         <ion-nav-view name="signin"></ion-nav-view>
     </ion-tab>
 
 
     <!-- Create a new account -->
-    <ion-tab title="Sign up" icon-off="ion-ios7-personadd-outline" icon-on="ion-ios7-personadd" ui-sref="app.onboard.signup">
+    <ion-tab title="{{'ONBOARD_USER_SIGNUP_TAB_TITLE' | translate}}"  icon-off="ion-ios7-personadd-outline" icon-on="ion-ios7-personadd" ui-sref="app.onboard.signup">
         <ion-nav-view name="signup"></ion-nav-view>
     </ion-tab>
 
