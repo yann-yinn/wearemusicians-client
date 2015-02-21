@@ -12,6 +12,7 @@ angular.module('app')
       // if none of the below states are matched, use this as the fallback
       // for now, redirect to a 404 state, to let us know something goes wrong.
       $urlRouterProvider.otherwise('/not-found');
+      $translateProvider.preferredLanguage('fr');
 
       $stateProvider
 
@@ -52,7 +53,5 @@ angular.module('app')
 
       ]);
 
-
-      $translateProvider.preferredLanguage('fr');
 
     }]);

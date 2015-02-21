@@ -1,4 +1,4 @@
-<ion-view view-title="Me">
+<ion-view view-title="Me" ng-controller="meCtrl">
     <ion-content>
 
         <div class="card">
@@ -7,7 +7,7 @@
                 <h2>{{authentication.user.email}}</h2>
 
                 <button ng-click="authentication.signOut('app.onboard.home')"  class="button button-assertive">
-                    Logout
+                    {{'USER_SIGNOUT_BUTTON' | translate}}
                 </button>
             </div>
         </div>

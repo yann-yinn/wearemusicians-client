@@ -13,7 +13,7 @@ Form to create a new user on Drunken Panda the server.
             <div class="list">
 
                 <label class="item item-input">
-                    <span class="input-label">Email</span>
+                    <span class="input-label">{{'USER_SIGNUP_FORM_EMAIL_LABEL' | translate}}</span>
                     <input
                             type="email"
                             ng-model="user.email"
@@ -22,11 +22,11 @@ Form to create a new user on Drunken Panda the server.
                 </label>
 
                 <div ng-show="signUpForm.$submitted || signUpForm.email.$touched">
-                    <div ng-show="signUpForm.email.$error.required">Email is required.</div>
+                    <div ng-show="signUpForm.email.$error.required">{{'USER_SIGNUP_FORM_EMAIL_ERROR_REQUIRED' | translate}}</div>
                 </div>
 
                 <label class="item item-input">
-                    <span class="input-label">Name</span>
+                    <span class="input-label">{{'USER_SIGNUP_FORM_NAME_LABEL' | translate}}</span>
                     <input
                             type="text"
                             ng-model="user.name"
@@ -35,12 +35,12 @@ Form to create a new user on Drunken Panda the server.
                 </label>
 
                 <div ng-show="signUpForm.$submitted || signUpForm.name.$touched">
-                    <div ng-show="signUpForm.name.$error.required">Tell us your name.</div>
+                    <div ng-show="signUpForm.name.$error.required">{{'USER_SIGNUP_FORM_NAME_ERROR_REQUIRED' | translate}}</div>
                 </div>
 
 
                 <label class="item item-input">
-                    <span class="input-label">Password</span>
+                    <span class="input-label">{{'USER_SIGNUP_FORM_PASSWORD_LABEL' | translate}}</span>
                     <input
                             type="password"
                             name="password"
@@ -49,7 +49,7 @@ Form to create a new user on Drunken Panda the server.
                 </label>
 
                 <div ng-show="signUpForm.$submitted || signUpForm.password.$touched">
-                    <div ng-show="signUpForm.password.$error.required">Password is required.</div>
+                    <div ng-show="signUpForm.password.$error.required">{{'USER_SIGNUP_FORM_PASSWORD_ERROR_REQUIRED' | translate}}</div>
                 </div>
 
             </div>
@@ -58,7 +58,7 @@ Form to create a new user on Drunken Panda the server.
                 <input
                         class="button button-block button-positive"
                         type="submit"
-                        value="Sign up">
+                        value="{{'USER_SIGNUP_BUTTON' | translate}}">
 
             </div>
 
