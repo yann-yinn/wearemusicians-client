@@ -11,13 +11,13 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
     <!-- Persons Tab -->
-    <ion-tab title="Persons" icon-off="ion-ios7-heart-outline" icon-on="ion-ios7-heart" ui-sref="app.main.users">
+    <ion-tab title="{{'APP_TAB_USERS_TITLE' | translate}}" icon-off="ion-ios7-heart-outline" icon-on="ion-ios7-heart" ui-sref="app.main.users">
         <ion-nav-view name="usersList"></ion-nav-view>
     </ion-tab>
 
 
     <!-- Account Tab -->
-    <ion-tab title="Account" icon-off="ion-ios7-gear-outline" icon-on="ion-ios7-gear" ui-sref="app.main.me">
+    <ion-tab title="{{'APP_TAB_ME_TITLE' | translate}}" icon-off="ion-ios7-gear-outline" icon-on="ion-ios7-gear" ui-sref="app.main.me">
         <ion-nav-view name="me"></ion-nav-view>
     </ion-tab>
 

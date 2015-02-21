@@ -7,16 +7,9 @@
 
 /**
  * Master module, calling other modules.
- *
- * angular.module object is a global place for creating, registering and retrieving Angular modules.
- * 'app' is the name of this angular module (also set in a <body> attribute in index.html)
- * the 2nd parameter is an array of required modules.
- *
- * A module is a collection of configuration and run blocks which get applied
- * to the application during the bootstrap process.
- * In its simplest form the module consist of a collection of two kinds of blocks:
- * - run
- * - config
+ * Others modules should not call any code from this module, as
+ * we may use this master module to disable one module by commenting
+ * its dependencies array without braking the app.
  *
  * @see https://docs.angularjs.org/guide/module
  */
@@ -34,6 +27,7 @@ angular.module('app', [
     '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config',
     function($ionicPlatform, $rootScope, authentication, $location, config) {
     $ionicPlatform.ready(function() {
+      
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins.Keyboard) {

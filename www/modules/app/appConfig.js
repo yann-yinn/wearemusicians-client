@@ -53,5 +53,15 @@ angular.module('app')
 
       ]);
 
+      $translateProvider.translations('en', {
+        APP_TAB_ME_TITLE: "Me",
+        APP_TAB_USERS_TITLE: "Users"
+      });
+
+      $translateProvider.translations('fr', {
+        APP_TAB_ME_TITLE: "Moi",
+        APP_TAB_USERS_TITLE: "Utilisateurs"
+      });
+
 
     }]);
