@@ -1,8 +1,9 @@
-(function(){
+(function () {
 
   /**
-   * Get users from server
+   * Authenticate a user against server
    */
+
   angular.module('app.authentication')
 
     .service('authentication', ['$http', 'config', '$state', function($http, config, $state) {
@@ -16,9 +17,9 @@
 
         var url = config.serverUrl + '/auth/login';
 
-        $http.post(url, {email:email, password:password})
+        $http.post(url, {email: email, password: password})
 
-          .success(_.bind(function(data, status, headers, config) {
+          .success(_.bind(function (data, status, headers, config) {
             // store current user.
             this.user = data;
             $state.go(redirection);

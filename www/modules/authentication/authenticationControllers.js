@@ -14,6 +14,7 @@
       // @see login-form.html
       $scope.signIn = function(user) {
         // do not post request if user did not fill its email or password
+        // @FIXME use template with form.$valid on submit instead.
         if (!user.email || !user.password) {
           return;
         }

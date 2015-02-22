@@ -1,44 +1,63 @@
 (function(){
 
-angular.module('app.user')
+  "use strict";
 
-  // display my account informations
-  .controller('meCtrl', ['$scope', 'authentication', function($scope, authentication) {
-    $scope.authentication = authentication;
-  }])
+  angular.module('app.user')
 
-  // create a new user from signUp form
-  .controller('signUpCtrl', ['$scope', 'user', '$state', function($scope, userService, $state) {
+    // display my account informations
+    .controller('meCtrl', ['$scope', 'authentication', function($scope, authentication) {
+      $scope.authentication = authentication;
+    }])
 
-    $scope.user = {
-      email : '',
-      password: ''
-    };
+    // create a new user from signUp form
+    .controller('signUpCtrl', ['$scope', 'user', '$state', function($scope, userService, $state) {
 
-    $scope.createUser = function(user) {
-      userService.save(user);
-      $state.go('app.onboard.home');
-    };
+      $scope.user = {
+        email : '',
+        password: ''
+      };
 
-  }])
+      $scope.createUser = function(user) {
 
-  .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
+        userService.save(user).$promise.then(
 
-    $scope.users = user.query();
-    console.log($scope.users);
+          // success callback
+          function(){
+            alert('user successfully created, you can signIn');
+            $state.go('app.onboard.signin');
+          },
 
-    $scope.doRefresh = function() {
+          // error callback
+          function(response){
+            if (typeof response.data.error.message != 'undefined') {
+              alert("User not created : " + response.data.error.message);
+            }
+            else {
+              alert("An error was encountered but no message error found.")
+            }
+          }
+        );
+
+      };
+
+    }])
+
+    .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
+
       $scope.users = user.query();
-      $scope.users.$promise.finally(function() {
-        $scope.$broadcast('scroll.refreshComplete');
-      });
 
-    };
-  }])
+      $scope.doRefresh = function() {
+        $scope.users = user.query();
+        $scope.users.$promise.finally(function() {
+          $scope.$broadcast('scroll.refreshComplete');
+        });
 
-  .controller('userDetailCtrl', ['$scope', '$stateParams', 'user', function($scope, $stateParams, user) {
-    $scope.user = user.get({ id: $stateParams.userId });
-  }]);
+      };
+    }])
+
+    .controller('userDetailCtrl', ['$scope', '$stateParams', 'user', function($scope, $stateParams, user) {
+      $scope.user = user.get({ id: $stateParams.userId });
+    }]);
 
 })();
 
