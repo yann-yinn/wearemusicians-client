@@ -1,6 +1,9 @@
-angular.module('app.onboard', [
-  'pascalprecht.translate',
-  'app.authentication',
-  'app.user'
-]);
+(function(){
 
+  angular.module('app.onboard', [
+    'pascalprecht.translate',
+    'app.authentication',
+    'app.user'
+  ]);
+
+})();

@@ -1,67 +1,73 @@
-angular.module('app')
+(function () {
 
-  // create our states; this is some kind of advanced router for our app.
-  // states machines allow ionic module to build automatically a "back" button
-  // and are far more flexible than native ng-route from Angular js.
-  // @see ui-router module : https://github.com/angular-ui/ui-router
+  angular.module('app')
 
-  .config([
-    '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 'config', '$translateProvider',
-    function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config, $translateProvider) {
+    // create our states; this is some kind of advanced router for our app.
+    // states machines allow ionic module to build automatically a "back" button
+    // and are far more flexible than native ng-route from Angular js.
+    // @see ui-router module : https://github.com/angular-ui/ui-router
 
-      // if none of the below states are matched, use this as the fallback
-      // for now, redirect to a 404 state, to let us know something goes wrong.
-      $urlRouterProvider.otherwise('/onboard/home');
-      $translateProvider.preferredLanguage('fr');
+    .config([
+      '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 'config', '$translateProvider',
+      function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config, $translateProvider) {
 
-      $stateProvider
+        // if none of the below states are matched, use this as the fallback
+        // for now, redirect to a 404 state, to let us know something goes wrong.
+        $urlRouterProvider.otherwise('/onboard/home');
+        $translateProvider.preferredLanguage('fr');
 
-        // Abstract root of our app. Set as abstract, we dont want this state
-        // to be transionned to. But it will be always "active" by default,
-        // so this is some kind of middleware for our states routing.
-        // All our states will be children of this states. As
-        // children are rendered inside parent state template, we need
-        // to provide here a template so that children can be rendered somewhere !
-        .state('app', {
-          abstract: true,
-          // children states templates will be inserted here :
-          template:'<ion-nav-view></ion-nav-view>'
-        })
+        $stateProvider
 
-        // route not found will get here.
-        .state('app.notFound', {
-          url: '/not-found',
-          // children states templates will be inserted here
-          template:'State not found'
-        })
+          // Abstract root of our app. Set as abstract, we dont want this state
+          // to be transionned to. But it will be always "active" by default,
+          // so this is some kind of middleware for our states routing.
+          // All our states will be children of this states. As
+          // children are rendered inside parent state template, we need
+          // to provide here a template so that children can be rendered somewhere !
+          .state('app', {
+            abstract: true,
+            // children states templates will be inserted here :
+            template:'<ion-nav-view></ion-nav-view>'
+          })
 
-        // Abstract root of app.main
-        .state('app.main', {
-          abstract: true,
-          // children states templates will be inserted here
-          templateUrl:'modules/app/templates/main.html'
+          // route not found will get here.
+          .state('app.notFound', {
+            url: '/not-found',
+            // children states templates will be inserted here
+            template:'State not found'
+          })
+
+          // Abstract root of app.main
+          .state('app.main', {
+            abstract: true,
+            // children states templates will be inserted here
+            templateUrl:'modules/app/templates/main.html'
+          });
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+          // Allow same origin resource loads.
+          'self',
+          // Allow loading from soundcloud domain.  Notice the difference between * and **.
+          'https://*.soundcloud.com/**',
+          'http://*' + '91.121.166.167' + '**',
+          'http://91.121.166.167' + '**',
+
+          // just in case, allow access to our demo server for now.
+          config.serverUrl + '/**'
+
+        ]);
+
+        $translateProvider.translations('en', {
+          APP_TAB_ME_TITLE: "Me",
+          APP_TAB_USERS_TITLE: "Users"
         });
 
-      $sceDelegateProvider.resourceUrlWhitelist([
-        // Allow same origin resource loads.
-        'self',
-        // Allow loading from soundcloud domain.  Notice the difference between * and **.
-        'https://*.soundcloud.com/**',
-
-        // just in case, allow access to our demo server for now.
-        config.serverUrl + '/**'
-
-      ]);
-
-      $translateProvider.translations('en', {
-        APP_TAB_ME_TITLE: "Me",
-        APP_TAB_USERS_TITLE: "Users"
-      });
-
-      $translateProvider.translations('fr', {
-        APP_TAB_ME_TITLE: "Moi",
-        APP_TAB_USERS_TITLE: "Utilisateurs"
-      });
+        $translateProvider.translations('fr', {
+          APP_TAB_ME_TITLE: "Moi",
+          APP_TAB_USERS_TITLE: "Utilisateurs"
+        });
 
 
-    }]);
+      }]);
+
+})();

@@ -1,51 +1,52 @@
-/**
- * Get users from server
- */
-angular.module('app.authentication')
+(function(){
 
-  .service('authentication', ['$http', 'config', '$state', function($http, config, $state) {
+  /**
+   * Get users from server
+   */
+  angular.module('app.authentication')
 
-    /**
-     * @param email (string) : user email
-     * @param password (string) : user password as plain text.
-     * @param redirection (string) : a state name to redirect user after sign in.
-     */
-    this.signIn = function(email, password, redirection) {
+    .service('authentication', ['$http', 'config', '$state', function($http, config, $state) {
 
-      var url = config.serverUrl + '/auth/login';
+      /**
+       * @param email (string) : user email
+       * @param password (string) : user password as plain text.
+       * @param redirection (string) : a state name to redirect user after sign in.
+       */
+      this.signIn = function(email, password, redirection) {
 
-      $http.post(url, {email:email, password:password})
+        var url = config.serverUrl + '/auth/login';
 
-        .success(_.bind(function(data, status, headers, config) {
-          // store current user.
-          this.user = data;
-          $state.go(redirection);
-        }, this))
+        $http.post(url, {email:email, password:password})
 
-        .error(function(data, status, headers, config) {
-          alert(status);
-        });
-    };
+          .success(_.bind(function(data, status, headers, config) {
+            // store current user.
+            this.user = data;
+            $state.go(redirection);
+          }, this))
 
-    /**
-     * @param redirection (string) : a state name to redirect user after sign in.
-     */
-    this.signOut = function(redirection) {
+          .error(function(data, status, headers, config) {
+            alert(status);
+          });
+      };
 
-      var url = config.serverUrl + '/auth/logout';
+      /**
+       * @param redirection (string) : a state name to redirect user after sign in.
+       */
+      this.signOut = function(redirection) {
 
-      $http.get(url)
+        var url = config.serverUrl + '/auth/logout';
 
-        .success(_.bind(function(data, status, headers, config) {
-          $state.go(redirection);
-        }, $state))
+        $http.get(url)
 
-        .error(function(data, status, headers, config) {
-          alert(status);
-        });
-    };
+          .success(_.bind(function(data, status, headers, config) {
+            $state.go(redirection);
+          }, $state))
 
+          .error(function(data, status, headers, config) {
+            alert(status);
+          });
+      };
 
+    }]);
 
-
-  }]);
+})();

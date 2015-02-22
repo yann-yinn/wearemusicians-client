@@ -1,36 +1,40 @@
-angular.module('app.authentication')
+(function(){
 
-  .config([
-    '$stateProvider','$translateProvider',
-    function($stateProvider, $translateProvider) {
+  angular.module('app.authentication')
 
-    $stateProvider
+    .config([
+      '$stateProvider','$translateProvider',
+      function($stateProvider, $translateProvider) {
 
-      .state('app.main.signIn', {
-        url: '/signin',
-        views: {
-          'me': {
-            templateUrl: 'modules/authentication/templates/signInForm.html'
-          }
-        }
-      });
+        $stateProvider
 
-    $translateProvider.translations('en', {
-      AUTHENTICATION_SIGNOUT_BUTTON: "Sign out",
-      AUTHENTICATION_SIGNIN_BUTTON: "Sign in",
-      AUTHENTICATION_SIGNIN_FORM_EMAIL_LABEL: "Email",
-      AUTHENTICATION_SIGNIN_FORM_EMAIL_ERROR_REQUIRED:"Email is required",
-      AUTHENTICATION_SIGNIN_FORM_PASSWORD_LABEL:"Password",
-      AUTHENTICATION_SIGNIN_FORM_PASSWORD_ERROR_REQUIRED:"Password is required"
-    });
+          .state('app.main.signIn', {
+            url: '/signin',
+            views: {
+              'me': {
+                templateUrl: 'modules/authentication/templates/signInForm.html'
+              }
+            }
+          });
 
-    $translateProvider.translations('fr', {
-      AUTHENTICATION_SIGNOUT_BUTTON: "Se déconnecter",
-      AUTHENTICATION_SIGNIN_BUTTON: "Se connecter",
-      AUTHENTICATION_SIGNIN_FORM_EMAIL_LABEL:"Email",
-      AUTHENTICATION_SIGNIN_FORM_EMAIL_ERROR_REQUIRED:"L'email est requis",
-      AUTHENTICATION_SIGNIN_FORM_PASSWORD_LABEL:"Mot de passe",
-      AUTHENTICATION_SIGNIN_FORM_PASSWORD_ERROR_REQUIRED:"Le mot de passe est requis"
-    });
+        $translateProvider.translations('en', {
+          AUTHENTICATION_SIGNOUT_BUTTON: "Sign out",
+          AUTHENTICATION_SIGNIN_BUTTON: "Sign in",
+          AUTHENTICATION_SIGNIN_FORM_EMAIL_LABEL: "Email",
+          AUTHENTICATION_SIGNIN_FORM_EMAIL_ERROR_REQUIRED:"Email is required",
+          AUTHENTICATION_SIGNIN_FORM_PASSWORD_LABEL:"Password",
+          AUTHENTICATION_SIGNIN_FORM_PASSWORD_ERROR_REQUIRED:"Password is required"
+        });
 
-  }]);
+        $translateProvider.translations('fr', {
+          AUTHENTICATION_SIGNOUT_BUTTON: "Se déconnecter",
+          AUTHENTICATION_SIGNIN_BUTTON: "Se connecter",
+          AUTHENTICATION_SIGNIN_FORM_EMAIL_LABEL:"Email",
+          AUTHENTICATION_SIGNIN_FORM_EMAIL_ERROR_REQUIRED:"L'email est requis",
+          AUTHENTICATION_SIGNIN_FORM_PASSWORD_LABEL:"Mot de passe",
+          AUTHENTICATION_SIGNIN_FORM_PASSWORD_ERROR_REQUIRED:"Le mot de passe est requis"
+        });
+
+      }]);
+
+})();

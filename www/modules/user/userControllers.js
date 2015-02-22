@@ -1,3 +1,5 @@
+(function(){
+
 angular.module('app.user')
 
   // display my account informations
@@ -23,6 +25,7 @@ angular.module('app.user')
   .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
 
     $scope.users = user.query();
+    console.log($scope.users);
 
     $scope.doRefresh = function() {
       $scope.users = user.query();
@@ -37,5 +40,5 @@ angular.module('app.user')
     $scope.user = user.get({ id: $stateParams.userId });
   }]);
 
-
+})();
 
