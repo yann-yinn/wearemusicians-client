@@ -2,6 +2,11 @@
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
     <!-- Welcome homepage -->
+    <ion-tab title="jump to users (debug)" icon-off="ion-ios7-home-outline" icon-on="ion-ios7-home" ui-sref="app.main.users">
+        <ion-nav-view name="users"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Welcome homepage -->
     <ion-tab title="{{'ONBOARD_HOME' | translate}}" icon-off="ion-ios7-home-outline" icon-on="ion-ios7-home" ui-sref="app.onboard.home">
         <ion-nav-view name="home"></ion-nav-view>
     </ion-tab>

@@ -45,6 +45,23 @@
     .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
 
       $scope.users = user.query();
+      $scope.users.$promise.then(
+
+        // success callback
+        function(response){
+
+        },
+
+        // error callback
+        function(response){
+          if (typeof response.data.error.message != 'undefined') {
+            alert("User not created : " + response.data.error.message);
+          }
+          else {
+            alert("An error was encountered but no message error found.")
+          }
+        }
+      );
 
       $scope.doRefresh = function() {
         $scope.users = user.query();
