@@ -1,5 +1,10 @@
 #We Are musicians
 
+## WARNING
+
+l'utilisation de couleurs pour le grep dans un terminal peut faire planter le build.
+
+
 ## donwload the app on iphone
 
 ### download "Ionic view" from the apple store
