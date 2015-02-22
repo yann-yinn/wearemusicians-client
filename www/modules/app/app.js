@@ -48,7 +48,7 @@ angular.module('app', [
     $rootScope.$on("$stateChangeStart",
       function (event, toState, toParams, fromState, fromParams) {
         if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
-          //$location.path('app.onboard.home');
+          $location.path('app.onboard.home');
         }
       });
   }]);
