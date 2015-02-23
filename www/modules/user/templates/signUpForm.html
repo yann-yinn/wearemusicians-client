@@ -6,7 +6,7 @@ Form to create a new user on Drunken Panda the server.
     <ion-content>
 
         <!-- ng-submit : submit only of the form is valid -->
-        <form name="signUpForm" novalidate ng-submit="createUser(user)">
+        <form name="signUpForm" novalidate ng-submit="signUpForm.$valid && createUser(user)">
 
             <div class="list">
 
