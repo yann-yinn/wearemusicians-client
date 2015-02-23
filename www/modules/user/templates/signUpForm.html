@@ -56,6 +56,7 @@ Form to create a new user on Drunken Panda the server.
                 <input
                         class="button button-block button-positive"
                         type="submit"
+                        ng-disabled="signUpForm.$invalid"
                         value="{{'USER_SIGNUP_BUTTON' | translate}}">
 
             </div>
