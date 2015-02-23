@@ -41,6 +41,19 @@
 }
 
 .bar-header .title {
-    //color:white !important;
+
     font-weight: bold;
 }
+
+/*
+
+form {
+      transition:0.5s linear all;
+      background: white;
+  }
+form .ng-invalid {
+    background: red;
+    color:white;
+}
+*/
+

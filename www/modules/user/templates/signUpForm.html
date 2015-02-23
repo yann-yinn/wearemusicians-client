@@ -19,7 +19,7 @@ Form to create a new user on Drunken Panda the server.
                             required>
                 </label>
 
-                <div ng-show="signUpForm.$submitted || signUpForm.email.$touched">
+                <div ng-show="signUpForm.email.$touched">
                     <div ng-show="signUpForm.email.$error.required">{{'USER_SIGNUP_FORM_EMAIL_ERROR_REQUIRED' | translate}}</div>
                 </div>
 
