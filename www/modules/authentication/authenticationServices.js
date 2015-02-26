@@ -8,6 +8,9 @@
 
     .service('authentication', ['$http', 'config', '$state', function($http, config, $state) {
 
+      // will contain user datas if log in is successfull
+      this.user = null;
+
       /**
        * Log in a user to Drunken Panda server
        *

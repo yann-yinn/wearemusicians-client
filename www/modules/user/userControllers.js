@@ -5,8 +5,10 @@
   angular.module('app.user')
 
     // display my account informations
-    .controller('meCtrl', ['$scope', 'authentication', function($scope, authentication) {
-      $scope.authentication = authentication;
+    .controller('meCtrl', ['$scope', 'authentication', 'user', function($scope, authentication, user) {
+      // we use user service to load full user object
+      // from authentication datas received in log in operation
+      $scope.user = user.get({id: authentication.user.id});
     }])
 
     // create a new user from signUp form
@@ -23,7 +25,7 @@
 
           // success callback
           function(){
-            alert('user successfully created, you can signIn');
+            //alert('user successfully created, you can signIn');
             $state.go('app.onboard.signin');
           },
 

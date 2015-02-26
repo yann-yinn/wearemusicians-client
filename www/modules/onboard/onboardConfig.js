@@ -33,8 +33,7 @@
           url : "/signin",
           views: {
             'signin': {
-              templateUrl: 'modules/authentication/templates/signInForm.html',
-              controller: 'signInCtrl'
+              templateUrl: 'modules/authentication/templates/signInForm.html'
             }
           }
         })
