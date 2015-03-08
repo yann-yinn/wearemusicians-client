@@ -6,7 +6,7 @@
 
     // display my account informations
     .controller('meCtrl',
-      ['$scope', 'authentication', 'user','$state', 'localStorageService',
+      ['$scope', 'authentication', 'user', '$state', 'localStorageService',
        function($scope, authentication, user, $state, localStorageService) {
 
          // get current user datas from local storage.

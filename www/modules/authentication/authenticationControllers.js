@@ -20,15 +20,14 @@
 
           .success(_.bind(function (data, status, headers, config) {
 
-            $rootScope.$broadcast('appUserLoggedIn', data, status, headers, config);
+            //$rootScope.$broadcast('appUserLoggedIn', data, status, headers, config);
 
             // update user authentication datas, that how we know
             // a user is "logged in for now".
-            authentication.user = data;
             localStorageService.set('user', data);
 
             // @FIXME dependance circulaire : cette route est définie par le module users.
-            alert("Welcome back " + authentication.user.name + '!');
+            alert("Welcome back " + data.name + '!');
             $state.go('app.main.users');
           }, this))
 

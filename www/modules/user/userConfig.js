@@ -12,6 +12,7 @@
 
           .state('app.main.me', {
             url: '/me',
+            cache : false,
             views: {
               'me': {
                 templateUrl: 'modules/user/templates/me.html'
