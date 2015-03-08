@@ -26,8 +26,8 @@
     ])
 
     .run([
-      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', '$cookieStore',
-      function($ionicPlatform, $rootScope, authentication, $location, config, $cookieStore) {
+      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', '$cookies',
+      function($ionicPlatform, $rootScope, authentication, $location, config, $cookies) {
         $ionicPlatform.ready(function() {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -51,10 +51,10 @@
           function (event, toState, toParams, fromState, fromParams) {
 
             // user browser cookie to reconnect automaticcaly a previously logged in user.
-            if ($cookieStore.get('user')) {
-              authentication.user = $cookieStore.get('user');
-              $location.path('app.main.users');
-            }
+            //if ($cookies.get('user')) {
+              //authentication.user = $cookies.get('user');
+            //  $location.path('app.main.users');
+            //}
 
             if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
               //$location.path('app.onboard.home');

@@ -39,7 +39,7 @@ window.ionic.version = '1.0.0-beta.14';
        * The reason we don't just let $getByHandle return the controller instance
        * itself is that the controller instance might not exist yet.
        *
-       * We want persons to be able to do
+       * We want people to be able to do
        * `var instance = $ionicScrollDelegate.$getByHandle('foo')` on controller
        * instantiation, but on controller instantiation a child directive
        * may not have been compiled yet!
