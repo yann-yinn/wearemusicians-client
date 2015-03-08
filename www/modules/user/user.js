@@ -12,7 +12,8 @@
   angular.module('app.user', [
     'pascalprecht.translate',
     'app.authentication', // authenticate to druken panda auth system
-    'ngResource' // for REST services
+    'ngResource', // for REST services
+    'ngCookies'
   ]);
 
 })();

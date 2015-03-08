@@ -8,7 +8,8 @@
    */
   angular.module('app.authentication', [
     'pascalprecht.translate',
-    'app.config'
+    'app.config',
+    'ngCookies'
   ]);
 
 })();

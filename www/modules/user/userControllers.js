@@ -6,8 +6,8 @@
 
     // display my account informations
     .controller('meCtrl',
-      ['$scope', 'authentication', 'user','$state',
-       function($scope, authentication, user, $state) {
+      ['$scope', 'authentication', 'user','$state', '$cookieStore',
+       function($scope, authentication, user, $state, $cookieStore) {
       // we use user service to load full user object
       // from authentication datas received in log in operation
       $scope.user = user.get({id: authentication.user.id});
@@ -16,6 +16,11 @@
 
         authentication.signOut()
         .success(_.bind(function(data, status, headers, config) {
+
+          // destroy user cookie and authentication user variable.
+          $cookieStore.remove('user');
+          delete authentication.user;
+
           $state.go(redirection);
         }, $state))
 

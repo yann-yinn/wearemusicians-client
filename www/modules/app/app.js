@@ -21,12 +21,13 @@
       'app.authentication',
       'app.user',
       'app.onboard',
-      'pascalprecht.translate'
+      'pascalprecht.translate',
+      'ngCookies'
     ])
 
     .run([
-      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config',
-      function($ionicPlatform, $rootScope, authentication, $location, config) {
+      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', '$cookieStore',
+      function($ionicPlatform, $rootScope, authentication, $location, config, $cookieStore) {
         $ionicPlatform.ready(function() {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -48,6 +49,12 @@
         // If not, we redirect him to the login / create account page.
         $rootScope.$on("$stateChangeStart",
           function (event, toState, toParams, fromState, fromParams) {
+
+            // user browser cookie to reconnect automaticcaly a previously logged in user.
+            if ($cookieStore.get('user')) {
+              authentication.user = $cookieStore.get('user');
+            }
+
             if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
               //$location.path('app.onboard.home');
             }

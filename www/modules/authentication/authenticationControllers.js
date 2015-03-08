@@ -4,7 +4,8 @@
 
     // log a user to the server
     .controller('signInCtrl',
-      ['$rootScope', '$scope', 'authentication', '$state', function($rootScope, $scope, authentication, $state) {
+      ['$rootScope', '$scope', 'authentication', '$state', '$cookieStore',
+       function($rootScope, $scope, authentication, $state, $cookieStore) {
 
       $scope.user = {
         email : '',
@@ -22,7 +23,8 @@
             // update user authentication datas, that how we know
             // a user is "logged in for now".
             authentication.user = data;
-            //alert("Successfull login !");
+            $cookieStore.put('user',  data);
+
             // @FIXME dependance circulaire : cette route est définie par le module users.
             alert("Welcome back " + authentication.user.name + '!');
             $state.go('app.main.users');
