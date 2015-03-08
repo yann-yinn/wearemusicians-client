@@ -53,6 +53,7 @@
             // user browser cookie to reconnect automaticcaly a previously logged in user.
             if ($cookieStore.get('user')) {
               authentication.user = $cookieStore.get('user');
+              $location.path('app.main.users');
             }
 
             if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
