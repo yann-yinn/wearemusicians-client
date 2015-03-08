@@ -13,7 +13,7 @@
 
         // if none of the below states are matched, use this as the fallback
         // for now, redirect to a 404 state, to let us know something goes wrong.
-        $urlRouterProvider.otherwise('/not-found');
+        $urlRouterProvider.otherwise('/onboard/home');
 
         $translateProvider.preferredLanguage('fr');
 

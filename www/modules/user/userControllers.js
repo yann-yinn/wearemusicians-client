@@ -22,6 +22,8 @@
                localStorageService.remove('user');
                $scope.user = {};
 
+               // redirect to app.onboard.home
+               $state.go(redirection);
              }, $state))
 
              .error(function(data, status, headers, config) {
