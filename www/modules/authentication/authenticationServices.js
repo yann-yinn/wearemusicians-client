@@ -19,9 +19,7 @@
        * @param redirection (string) : a state name to redirect user after sign in.
        */
       this.signIn = function(email, password, redirection) {
-
         var url = config.serverUrl + '/auth/login';
-
         return $http.post(url, {email: email, password: password});
 
       };
@@ -30,18 +28,7 @@
        * @param redirection (string) : a state name to redirect user after sign in.
        */
       this.signOut = function(redirection) {
-
-        var url = config.serverUrl + '/auth/logout';
-
-        return $http.get(url)
-
-          .success(_.bind(function(data, status, headers, config) {
-            $state.go(redirection);
-          }, $state))
-
-          .error(function(data, status, headers, config) {
-            alert(status);
-          });
+        return $http.get(config.serverUrl + '/auth/logout');
       };
 
     }]);

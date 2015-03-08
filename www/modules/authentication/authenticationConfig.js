@@ -15,7 +15,7 @@
                 templateUrl: 'modules/authentication/templates/signInForm.html'
               }
             }
-          });
+          })
 
         $translateProvider.translations('en', {
           AUTHENTICATION_SIGNOUT_BUTTON: "Sign out",

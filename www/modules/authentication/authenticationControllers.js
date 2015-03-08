@@ -24,6 +24,7 @@
             authentication.user = data;
             //alert("Successfull login !");
             // @FIXME dependance circulaire : cette route est définie par le module users.
+            alert("Welcome back " + authentication.user.name + '!');
             $state.go('app.main.users');
           }, this))
 

@@ -5,10 +5,25 @@
   angular.module('app.user')
 
     // display my account informations
-    .controller('meCtrl', ['$scope', 'authentication', 'user', function($scope, authentication, user) {
+    .controller('meCtrl',
+      ['$scope', 'authentication', 'user','$state',
+       function($scope, authentication, user, $state) {
       // we use user service to load full user object
       // from authentication datas received in log in operation
       $scope.user = user.get({id: authentication.user.id});
+
+      $scope.signOut = function(redirection) {
+
+        authentication.signOut()
+        .success(_.bind(function(data, status, headers, config) {
+          $state.go(redirection);
+        }, $state))
+
+          .error(function(data, status, headers, config) {
+            alert(status);
+          });
+      };
+
     }])
 
     // create a new user from signUp form
@@ -46,18 +61,20 @@
 
     .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
 
-      $scope.users = user.query();
-      $scope.users.$promise.then(
+      var usersResource = user.query();
+      //console.log(userResource);
+      usersResource.$promise.then(
 
         // success callback
         function(response){
-
+          //console.log(response);
+          $scope.users = usersResource;
         },
 
         // error callback
         function(response){
           if (typeof response.data.error.message != 'undefined') {
-            alert("User not created : " + response.data.error.message);
+            alert("Failed to get users list server responds :" + response.data.error.message);
           }
           else {
             alert("An error was encountered but no message error found.")
