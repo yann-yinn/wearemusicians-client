@@ -22,12 +22,13 @@
       'app.user',
       'app.onboard',
       'pascalprecht.translate',
-      'ngCookies'
+      'ngCookies',
+      'LocalStorageModule'
     ])
 
     .run([
-      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', '$cookies',
-      function($ionicPlatform, $rootScope, authentication, $location, config, $cookies) {
+      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', 'localStorageService',
+      function($ionicPlatform, $rootScope, authentication, $location, config, localStorageService) {
         $ionicPlatform.ready(function() {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -50,14 +51,11 @@
         $rootScope.$on("$stateChangeStart",
           function (event, toState, toParams, fromState, fromParams) {
 
-            // user browser cookie to reconnect automaticcaly a previously logged in user.
-            //if ($cookies.get('user')) {
-              //authentication.user = $cookies.get('user');
-            //  $location.path('app.main.users');
-            //}
+            // is users is already logged in, skip onboarding.
+            currentUser = localStorageService.get('user');
 
-            if(!authentication.user && (toState.name != 'app.onboard.home' && toState.name != 'app.onboard.signin' &&toState.name != 'app.onboard.signup')) {
-              //$location.path('app.onboard.home');
+            if(currentUser && (toState.name == 'app.onboard.home' || toState.name == 'app.onboard.signin' || toState.name == 'app.onboard.signup')) {
+              $location.path('users');
             }
           });
       }]);

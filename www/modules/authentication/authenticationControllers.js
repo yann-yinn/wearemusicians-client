@@ -26,7 +26,6 @@
             // a user is "logged in for now".
             authentication.user = data;
             localStorageService.set('user', data);
-            //$cookies.put('user',  data, {expires:  new Date(2042)});
 
             // @FIXME dependance circulaire : cette route est définie par le module users.
             alert("Welcome back " + authentication.user.name + '!');

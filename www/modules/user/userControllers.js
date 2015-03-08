@@ -22,7 +22,6 @@
                localStorageService.remove('user');
                $scope.user = {};
 
-               //$state.go(redirection);
              }, $state))
 
              .error(function(data, status, headers, config) {
