@@ -6,30 +6,31 @@
 
     // display my account informations
     .controller('meCtrl',
-      ['$scope', 'authentication', 'user','$state', '$cookies',
-       function($scope, authentication, user, $state, $cookies) {
-      // we use user service to load full user object
-      // from authentication datas received in log in operation
-      $scope.user = user.get({id: authentication.user.id});
+      ['$scope', 'authentication', 'user','$state', 'localStorageService',
+       function($scope, authentication, user, $state, localStorageService) {
 
-      $scope.signOut = function(redirection) {
+         // get current user datas from local storage.
+         var localUser = localStorageService.get('user');
+         $scope.user = user.get({id: localUser.id});
 
-        authentication.signOut()
-        .success(_.bind(function(data, status, headers, config) {
+         $scope.signOut = function(redirection) {
 
-          // destroy user cookie and authentication user variable.
-          //$cookies.remove('user');
-          delete authentication.user;
+           authentication.signOut()
+             .success(_.bind(function(data, status, headers, config) {
 
-          $state.go(redirection);
-        }, $state))
+               // destroy user storage
+               localStorageService.remove('user');
+               $scope.user = {};
 
-          .error(function(data, status, headers, config) {
-            alert(status);
-          });
-      };
+               //$state.go(redirection);
+             }, $state))
 
-    }])
+             .error(function(data, status, headers, config) {
+               alert(status);
+             });
+         };
+
+       }])
 
     // create a new user from signUp form
     .controller('signUpCtrl', ['$scope', 'user', '$state', function($scope, userService, $state) {

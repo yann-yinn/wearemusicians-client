@@ -9,7 +9,7 @@
   angular.module('app.authentication', [
     'pascalprecht.translate',
     'app.config',
-    'ngCookies'
+    'LocalStorageModule'
   ]);
 
 })();

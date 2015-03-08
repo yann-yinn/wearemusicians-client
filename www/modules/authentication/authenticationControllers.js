@@ -4,8 +4,8 @@
 
     // log a user to the server
     .controller('signInCtrl',
-      ['$rootScope', '$scope', 'authentication', '$state', '$cookies',
-       function($rootScope, $scope, authentication, $state, $cookies) {
+      ['$rootScope', '$scope', 'authentication', '$state', 'localStorageService',
+       function($rootScope, $scope, authentication, $state, localStorageService) {
 
       $scope.user = {
         email : '',
@@ -19,11 +19,13 @@
         authentication.signIn(user.email, user.password)
 
           .success(_.bind(function (data, status, headers, config) {
+
             $rootScope.$broadcast('appUserLoggedIn', data, status, headers, config);
 
             // update user authentication datas, that how we know
             // a user is "logged in for now".
             authentication.user = data;
+            localStorageService.set('user', data);
             //$cookies.put('user',  data, {expires:  new Date(2042)});
 
             // @FIXME dependance circulaire : cette route est définie par le module users.
