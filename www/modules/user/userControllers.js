@@ -87,10 +87,14 @@
       );
 
       $scope.doRefresh = function() {
-        $scope.users = user.query();
-        $scope.users.$promise.finally(function() {
-          $scope.$broadcast('scroll.refreshComplete');
-        });
+        user.query().$promise
+
+          .then(function(users) {
+            $scope.users = users;
+          })
+          .then(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+          });
 
       };
     }])
