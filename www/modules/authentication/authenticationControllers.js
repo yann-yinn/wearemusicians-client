@@ -7,8 +7,15 @@
       ['$rootScope', '$scope', 'authentication', '$state', 'localStorageService',
        function($rootScope, $scope, authentication, $state, localStorageService) {
 
+         // try to get en email user already entered previously to
+         // avoid him some typing.
+         var email = '';
+         if (localStorageService.get('remember.email')) {
+           email = localStorageService.get('remember.email');
+         }
+
          $scope.user = {
-           email : '',
+           email : email,
            password: ''
          };
 

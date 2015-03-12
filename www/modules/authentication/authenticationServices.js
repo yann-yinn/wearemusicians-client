@@ -34,6 +34,9 @@
         httpPost.success(function (data, status, headers, config) {
           // save locally authentications datas.
           localStorageService.set('authenticationDatas', data);
+          if (typeof data.email !== 'undefined') {
+            localStorageService.set('remember.email', data.email);
+          }
         });
         return httpPost;
       };
