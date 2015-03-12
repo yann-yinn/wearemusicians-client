@@ -6,22 +6,19 @@
 
     // display my account informations
     .controller('meCtrl',
-      ['$scope', 'authentication', 'user', '$state', 'localStorageService',
-       function($scope, authentication, user, $state, localStorageService) {
+      ['$scope', 'authentication', 'user', '$state',
+       function($scope, authentication, user, $state) {
 
          // get current user datas from local storage.
-         var localUser = localStorageService.get('user');
-         $scope.user = user.get({id: localUser.id});
+         var authDatas = authentication.isAuthenticated();
+         // get full user object from server.
+         $scope.user = user.get({id: authDatas.id});
 
          $scope.signOut = function(redirection) {
 
            authentication.signOut()
+
              .success(_.bind(function(data, status, headers, config) {
-
-               // destroy user storage
-               localStorageService.remove('user');
-               $scope.user = {};
-
                // redirect to app.onboard.home
                $state.go(redirection);
              }, $state))

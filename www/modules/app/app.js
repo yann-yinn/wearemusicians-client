@@ -42,20 +42,16 @@
           }
         });
 
-        // access control : do not allow user to see any screen of our app
-        // if he is not logged in.
-        //
-        // Subscribe to "$stateChangeStart" event from ui-router :
-        // We check at each state change that user is logged in.
-        // If not, we redirect him to the login / create account page.
+        // if user is already authenticated, skip all onboarding screens
+        // and redirect him to the first actual screen of the app.
         $rootScope.$on("$stateChangeStart",
           function (event, toState, toParams, fromState, fromParams) {
 
-            // is users is already logged in, skip onboarding.
-            currentUser = localStorageService.get('user');
-
-            if(currentUser && (toState.name == 'app.onboard.home' || toState.name == 'app.onboard.signin' || toState.name == 'app.onboard.signup')) {
+            if(authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === 0)) {
               $location.path('users');
+            }
+            if (!authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === -1)) {
+              $location.path('onboard/home');
             }
           });
       }]);
