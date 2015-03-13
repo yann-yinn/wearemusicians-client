@@ -30,6 +30,10 @@
 
        }])
 
+    .controller('meFormCtrl', ['$scope', function($scope) {
+
+    }])
+
     // create a new user from signUp form
     .controller('signUpCtrl', ['$scope', 'user', '$state', function($scope, userService, $state) {
 

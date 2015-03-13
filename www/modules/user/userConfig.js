@@ -12,10 +12,19 @@
 
           .state('app.main.me', {
             url: '/me',
-            cache : false,
             views: {
               'me': {
                 templateUrl: 'modules/user/templates/me.html'
+              }
+            }
+          })
+
+          .state('app.main.meForm', {
+            url: '/me/edit',
+            // replace me informations view content with meform.html content in main.html
+            views: {
+              'me': {
+                templateUrl: 'modules/user/templates/meForm.html'
               }
             }
           })
