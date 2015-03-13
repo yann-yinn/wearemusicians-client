@@ -63,15 +63,15 @@
 
     }])
 
+    // list all existing users
     .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
 
       var usersResource = user.query();
-      //console.log(userResource);
+
       usersResource.$promise.then(
 
         // success callback
         function(response){
-          //console.log(response);
           $scope.users = usersResource;
         },
 
@@ -86,6 +86,7 @@
         }
       );
 
+      // refresh user list when dragging down
       $scope.doRefresh = function() {
         user.query().$promise
 
@@ -99,6 +100,7 @@
       };
     }])
 
+    // see detail for a specific user.
     .controller('userDetailCtrl', ['$scope', '$stateParams', 'user', function($scope, $stateParams, user) {
       $scope.user = user.get({ id: $stateParams.userId });
     }]);

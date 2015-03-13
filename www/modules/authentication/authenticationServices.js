@@ -7,9 +7,6 @@
 
     .service('authentication', ['$http', 'config', 'localStorageService', function($http, config, localStorageService) {
 
-      // will contain user datas if log in is successfull
-      this.user = null;
-
       /**
        * Return authentication datas if user is logged in, null otherwise
        * @returns {*}
@@ -45,10 +42,13 @@
        * sign Out user from server
        */
       this.signOut = function() {
-        // destro local authentication.
-        localStorageService.remove('authenticationDatas');
-        // logout from server
-        return $http.get(config.serverUrl + '/auth/logout');
+        // logout from drunken panda server
+        var httpGet = $http.get(config.serverUrl + '/auth/logout');
+        httpGet.success(function (data, status, headers, config) {
+          // destroy local authentication datas.
+          localStorageService.remove('authenticationDatas');
+        });
+        return httpGet;
       };
 
     }]);

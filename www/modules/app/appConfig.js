@@ -6,7 +6,6 @@
     // states machines allow ionic module to build automatically a "back" button
     // and are far more flexible than native ng-route from Angular js.
     // @see ui-router module : https://github.com/angular-ui/ui-router
-
     .config([
       '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 'config', '$translateProvider',
       function($stateProvider, $urlRouterProvider, $sceDelegateProvider, config, $translateProvider) {
@@ -48,12 +47,11 @@
         $sceDelegateProvider.resourceUrlWhitelist([
           // Allow same origin resource loads.
           'self',
+
           // Allow loading from soundcloud domain.  Notice the difference between * and **.
           'https://*.soundcloud.com/**',
-          'http://*' + '91.121.166.167' + '**',
-          'http://91.121.166.167' + '**',
 
-          // just in case, allow access to our demo server for now.
+          // Allow access to our server
           config.serverUrl + '/**'
 
         ]);

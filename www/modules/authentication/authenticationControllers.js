@@ -25,20 +25,17 @@
 
            // log in user to the server
            authentication.signIn(user.email, user.password)
-
-             // on successfull http request (code 2**)
              .success(function (data, status, headers, config) {
-               // store authentication datas of current user in local storage
                // @FIXME dependance circulaire : cette route est définie par le module users.
                alert("Welcome back " + data.name + '!');
                $state.go('app.main.users');
              })
-
              .error(function(data, status, headers, config) {
                alert("Loggin failed : " + data.error.message);
              });
+
          }
 
        }]);
 
-})()
+})();
