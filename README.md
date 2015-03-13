@@ -18,7 +18,6 @@ https://apps.ionic.io/apps
 
 This is where you can download my release of We are musicians.
 
-![wam qr code](https://raw.githubusercontent.com/nyl-auster/wearemusicians-client/master/www/img/app-qrcode.png)
 ![qr code](/www/img/app-qrcode.png?raw=true "Optional Title")
 
 ### upload a new release in Ionic view :
