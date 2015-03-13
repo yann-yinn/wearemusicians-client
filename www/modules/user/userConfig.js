@@ -31,6 +31,7 @@
 
           .state('app.main.users', {
             url: '/users',
+            cache: false,
             views: {
               'usersList': {
                 templateUrl: 'modules/user/templates/usersList.html'

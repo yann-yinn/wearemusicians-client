@@ -82,15 +82,37 @@
     }])
 
     // list all existing users
-    .controller('usersListCtrl', ['$scope', 'user', function($scope, user) {
+    .controller('usersListCtrl', ['$scope', 'user', 'localStorageService', '$ionicLoading', function($scope, user, localStorageService, $ionicLoading) {
 
-      var usersResource = user.query();
+      // search a local cache.
+      var localUsersList = false;
+      var cacheKey = 'cache.usersList';
+      if (localStorageService.get(cacheKey)) {
+        localUsersList = localStorageService.get(cacheKey);
+      }
+      $scope.users = localUsersList;
 
-      usersResource.$promise.then(
+      // no local cache, we need to display a loader while we are fetching
+      // datas to the webserver
+      if (!$scope.users) {
+        // Setup the loader
+        $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          noBackdrop: true,
+          maxWidth: 200,
+          showDelay: 0,
+          duration:250
+        });
+      }
+
+      user.query().$promise.then(
 
         // success callback
-        function(response){
-          $scope.users = usersResource;
+        function(users){
+          localStorageService.set(cacheKey, users);
+          $scope.users = users;
+          $ionicLoading.hide();
         },
 
         // error callback
@@ -106,15 +128,18 @@
 
       // refresh user list when dragging down
       $scope.doRefresh = function() {
-        user.query().$promise
-
-          .then(function(users) {
+        user.query().$promise.then(
+          // success callback
+          function(users) {
+            localStorageService.set(cacheKey, users);
             $scope.users = users;
-          })
-          .then(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+          },
+          // error callback
+          function(users) {
+            alert('server unreachable');
             $scope.$broadcast('scroll.refreshComplete');
           });
-
       };
     }])
 

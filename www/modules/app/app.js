@@ -18,6 +18,7 @@
       'app.user',
       'app.onboard',
       'app.instrument',
+      'app.offlineApp',
       'pascalprecht.translate',
       'LocalStorageModule',
     ])
