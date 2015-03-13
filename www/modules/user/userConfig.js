@@ -59,6 +59,7 @@
 
         $translateProvider.translations('en', {
           USER_SIGNUP_BUTTON: "Sign up !",
+          USER_EDIT_PROFILE_BUTTON: "Save",
           USER_SIGNOUT_BUTTON: "Sign out",
           USER_SIGNUP_FORM_EMAIL_LABEL: 'Email',
           USER_SIGNUP_FORM_EMAIL_ERROR_REQUIRED: 'Email is required',
@@ -67,11 +68,12 @@
           USER_SIGNUP_FORM_PASSWORD_LABEL: 'Password',
           USER_SIGNUP_FORM_PASSWORD_ERROR_REQUIRED: 'Password is required',
           USER_VIEW_USERS_LIST_TITLE: 'Users',
-          USER_VIEW_ME_TITLE: 'Me'
+          USER_VIEW_ME_TITLE: 'My account'
         });
 
         $translateProvider.translations('fr', {
           USER_SIGNUP_BUTTON: "Créer mon compte",
+          USER_EDIT_PROFILE_BUTTON: "Mettre à jour",
           USER_SIGNOUT_BUTTON: "Se déconnecter",
           USER_SIGNUP_FORM_EMAIL_LABEL: 'Email',
           USER_SIGNUP_FORM_EMAIL_ERROR_REQUIRED: "L'email est obligatoire",
@@ -80,7 +82,7 @@
           USER_SIGNUP_FORM_PASSWORD_LABEL: 'Mot de passe',
           USER_SIGNUP_FORM_PASSWORD_ERROR_REQUIRED: 'Le mot de passe est requis',
           USER_VIEW_USERS_LIST_TITLE: 'Utilisateurs',
-          USER_VIEW_ME_TITLE: 'Moi'
+          USER_VIEW_ME_TITLE: 'Mon profil'
         });
 
       }]);

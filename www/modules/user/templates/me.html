@@ -6,16 +6,16 @@
     </ion-nav-buttons>
     <ion-content>
 
-        <div class="card">
+
             <div class="item item-text-wrap">
-                <h2>{{ user.name }}</h2>
-                <h2>{{ user.email }}</h2>
+                <h1>{{ user.name }}</h1>
+                <h3>{{ user.email }}</h3>
 
                 <button ng-click="signOut('app.onboard.home')"  class="button button-assertive">
                     {{'USER_SIGNOUT_BUTTON' | translate}}
                 </button>
             </div>
-        </div>
+
 
     </ion-content>
 </ion-view>

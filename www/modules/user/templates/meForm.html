@@ -2,7 +2,60 @@
 
     <ion-content>
 
-EDIT ME
+        <!-- ng-submit : submit only of the form is valid -->
+        <form name="accountEditForm" novalidate ng-submit="">
+
+            <div class="list">
+
+                <label
+                        class="item item-input"
+                        ng-class="{ 'has-error' : accountEditForm.email.$invalid && !accountEditForm.email.$pristine }"
+                        >
+                    <span class="input-label">{{'USER_SIGNUP_FORM_EMAIL_LABEL' | translate}}</span>
+                    <input
+                            type="email"
+                            ng-model="user.email"
+                            name="email"
+                            required>
+                </label>
+
+                <p ng-show="accountEditForm.email.$invalid && !accountEditForm.email.$pristine" class="help-block">You email is invalid.</p>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'USER_SIGNUP_FORM_NAME_LABEL' | translate}}</span>
+                    <input
+                            type="text"
+                            ng-model="user.name"
+                            name="name"
+                            required>
+                </label>
+
+                <div ng-show="accountEditForm.$submitted || accountEditForm.name.$touched">
+                    <div ng-show="accountEditForm.name.$error.required">{{'USER_SIGNUP_FORM_NAME_ERROR_REQUIRED' | translate}}</div>
+                </div>
+
+            </div>
+
+            <div class="padding">
+                <input
+                        class="button button-block button-positive"
+                        type="submit"
+                        ng-disabled="accountEditForm.$invalid"
+                        ng-click="updateUser(user)"
+                        value="{{'USER_EDIT_PROFILE_BUTTON' | translate}}">
+
+            </div>
+
+            <div class="padding">
+                <input
+                        class="button button-block button-assertive"
+                        type="submit"
+                        ng-click="cancelEdition(user)"
+                        value="{{'CANCEL_BUTTON' | translate}}">
+
+            </div>
+
+        </form>
 
     </ion-content>
 </ion-view>

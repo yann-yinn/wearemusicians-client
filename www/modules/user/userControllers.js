@@ -30,7 +30,21 @@
 
        }])
 
-    .controller('meFormCtrl', ['$scope', function($scope) {
+    .controller('meFormCtrl', ['$scope', 'authentication', 'user', '$state', function($scope, authentication, user, $state) {
+
+      // get current user datas from local storage.
+      var authDatas = authentication.isAuthenticated();
+
+      // get full user object from server.
+      $scope.user = user.get({id: authDatas.id});
+
+      $scope.updateUser = function(updatedUser) {
+        user.save(updatedUser);
+      };
+
+      $scope.cancelEdition = function() {
+        $state.go('app.main.me');
+      }
 
     }])
 
