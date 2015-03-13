@@ -59,13 +59,15 @@
         $translateProvider.translations('en', {
           APP_TAB_ME_TITLE: "Me",
           APP_TAB_USERS_TITLE: "Users",
-          CANCEL_BUTTON: "Cancel"
+          CANCEL_BUTTON: "Cancel",
+          SAVE_BUTTON: "Save"
         });
 
         $translateProvider.translations('fr', {
           APP_TAB_ME_TITLE: "Moi",
           APP_TAB_USERS_TITLE: "Utilisateurs",
-          CANCEL_BUTTON: "Annuler"
+          CANCEL_BUTTON: "Annuler",
+          SAVE_BUTTON: "Sauvegarder"
         });
 
 

@@ -1,20 +1,28 @@
 <ion-view view-title="{{'USER_VIEW_ME_TITLE' | translate }}" ng-controller="meCtrl">
     <ion-nav-buttons side="right">
         <button class="button" ui-sref="app.main.meForm">
-           Edit
+            Edit
         </button>
     </ion-nav-buttons>
     <ion-content>
 
 
-            <div class="item item-text-wrap">
-                <h1>{{ user.name }}</h1>
-                <h3>{{ user.email }}</h3>
+        <div class="item item-text-wrap">
+            <h1>{{ user.name }}</h1>
 
+            <button ui-sref="app.main.meAddInstrumentForm" class="button button-balanced">
+                {{'USER_ADD_INSTRUMENT_BUTTON' | translate}}
+            </button>
+
+            <p></p>
+
+            <div>
                 <button ng-click="signOut('app.onboard.home')"  class="button button-assertive">
                     {{'USER_SIGNOUT_BUTTON' | translate}}
                 </button>
             </div>
+
+        </div>
 
 
     </ion-content>

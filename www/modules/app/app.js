@@ -17,9 +17,9 @@
       'app.authentication',
       'app.user',
       'app.onboard',
+      'app.instrument',
       'pascalprecht.translate',
-      'ngCookies',
-      'LocalStorageModule'
+      'LocalStorageModule',
     ])
 
     .run([

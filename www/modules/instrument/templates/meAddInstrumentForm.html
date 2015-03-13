@@ -1,0 +1,45 @@
+<ion-view view-title="{{'USER_ADD_INSTRUMENT_VIEW_TITLE' | translate }}" ng-controller="meAddInstrumentFormCtrl">
+
+    <ion-content>
+
+        <!-- ng-submit : submit only of the form is valid -->
+        <form name="meAddInstrumentForm" novalidate>
+
+            <div class="list">
+
+                <label class="item item-input">
+                    <span class="input-label">{{'USER_SIGNUP_FORM_NAME_LABEL' | translate}}</span>
+                    <input
+                            type="text"
+                            ng-model="user.instrument"
+                            name="name"
+                            required>
+                </label>
+
+                <div ng-show="meAddInstrumentForm.$submitted || meAddInstrumentForm.name.$touched">
+                    <div ng-show="meAddInstrumentForm.name.$error.required">{{'USER_SIGNUP_FORM_NAME_ERROR_REQUIRED' | translate}}</div>
+                </div>
+
+            </div>
+
+            <div class="padding">
+                <input
+                        class="button button-block button-positive"
+                        type="submit"
+                        ng-disabled="meAddInstrumentForm.$invalid"
+                        ng-click="addInstrument(instrument, user)"
+                        value="{{'SAVE_BUTTON' | translate}}">
+
+            </div>
+
+            <div class="padding">
+                <button ui-sref="app.main.me" class="button button-block button-assertive">
+
+                    {{'CANCEL_BUTTON' | translate}}
+                </button>
+            </div>
+
+        </form>
+
+    </ion-content>
+</ion-view>
