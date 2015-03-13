@@ -7,11 +7,7 @@
 (function () {
 
   /**
-   * Master module, calling other modules.
-   * Others modules should not call any code from this module, as
-   * we may use this master module to disable one module by commenting
-   * its dependencies array without braking the app.
-   *
+   * Master module, calling all other modules.
    * @see https://docs.angularjs.org/guide/module
    */
   angular.module('app', [
@@ -27,8 +23,9 @@
     ])
 
     .run([
-      '$ionicPlatform', '$rootScope', 'authentication', '$location', 'config', 'localStorageService',
-      function($ionicPlatform, $rootScope, authentication, $location, config, localStorageService) {
+      '$ionicPlatform', '$rootScope', 'authentication', '$location',
+      function($ionicPlatform, $rootScope, authentication, $location) {
+
         $ionicPlatform.ready(function() {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -40,22 +37,24 @@
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
           }
+
         });
 
-        // if user is already authenticated, skip all onboarding screens
-        // and redirect him to the first actual screen of the app.
+        // When ui-router is changing state :
         $rootScope.$on("$stateChangeStart",
-          function (event, toState, toParams, fromState, fromParams) {
 
+          function (event, toState, toParams, fromState, fromParams) {
+            // if user is already authenticated, skip all onboarding screens
             if(authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === 0)) {
               $location.path('users');
             }
+            // if user is not authenticatated, redirect him to onboard screens
             if (!authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === -1)) {
               $location.path('onboard/home');
             }
+
           });
       }]);
-
 
 })();
 
