@@ -16,9 +16,9 @@ https://apps.ionic.io/apps
 
 ### Scan this QR code from Ionic view app :
 
-This is where you can download my release of We are musicians.
+This is where you can download my release of We are musicians. (id app : 917f0fc5)
 
-![wam qr code](https://raw.githubusercontent.com/nyl-auster/wearemusicians-client/master/www/img/app-qrcode.png?token=AAUehxmTaaSw1Bu3cEKe3r5MhLEvMbGPks5U8v_8wA%3D%3D)
+![wam qr code](https://apps.ionic.io/qr/917f0fc5)
 
 ### upload a new release in Ionic view :
 
