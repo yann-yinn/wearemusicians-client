@@ -92,6 +92,7 @@
       }
       $scope.users = localUsersList;
 
+
       // no local cache, we need to display a loader while we are fetching
       // datas to the webserver
       if (!$scope.users) {

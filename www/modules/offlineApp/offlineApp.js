@@ -12,12 +12,16 @@
    * @see https://docs.angularjs.org/guide/module
    */
   angular.module('app.offlineApp', [
-
+      'ngResource'
     ])
 
-    .config(['$resourceProvider', function($resourceProvider) {
-      // Don't strip trailing slashes from calculated URLs
-      //$resourceProvider.defaults.actions = false;
+
+    .config(['$provide', function($provide) {
+      $provide.decorator('$resource', function($delegate) {
+        return $delegate;
+      });
+
+
     }]);
 
 
