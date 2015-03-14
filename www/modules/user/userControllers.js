@@ -84,18 +84,18 @@
     // list all existing users
     .controller('usersListCtrl', ['$scope', 'user', 'localStorageService', '$ionicLoading', function($scope, user, localStorageService, $ionicLoading) {
 
-      // search a local cache.
+      // search first for a local cache for user lists
       var localUsersList = false;
       var cacheKey = 'cache.usersList';
       if (localStorageService.get(cacheKey)) {
         localUsersList = localStorageService.get(cacheKey);
+        // update view with our local datas
+        $scope.users = localUsersList;
       }
-      $scope.users = localUsersList;
 
-
-      // no local cache, we need to display a loader while we are fetching
+      // no local cache, display a loader while we are fetching
       // datas to the webserver
-      if (!$scope.users) {
+      if (!localUsersList) {
         // Setup the loader
         $ionicLoading.show({
           content: 'Loading',
@@ -107,10 +107,12 @@
         });
       }
 
+      // query the server
       user.query().$promise.then(
 
         // success callback
         function(users){
+          // set result to the cache
           localStorageService.set(cacheKey, users);
           $scope.users = users;
           $ionicLoading.hide();
