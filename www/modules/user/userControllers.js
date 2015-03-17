@@ -6,16 +6,18 @@
 
     // display my account informations
     .controller('meCtrl',
-      ['$scope', 'authentication', 'user', '$state',
-       function($scope, authentication, user, $state) {
+      ['$scope', '$ionicPopup', 'authentication', 'user', '$state',
+       function($scope, $ionicPopup, authentication, user, $state) {
 
          // get current user datas from local storage.
          var authDatas = authentication.isAuthenticated();
+
          // get full user object from server.
-         $scope.user = user.get({id: authDatas.id});
+         user.get({id: authDatas.id}).$promise.then(function(me){
+           $scope.me = me;
+         });
 
          $scope.signOut = function(redirection) {
-
            authentication.signOut()
 
              .success(_.bind(function(data, status, headers, config) {
@@ -26,6 +28,7 @@
              .error(function(data, status, headers, config) {
                alert(status);
              });
+
          };
 
        }])
@@ -82,67 +85,40 @@
     }])
 
     // list all existing users
-    .controller('usersListCtrl', ['$scope', 'user', 'localStorageService', '$ionicLoading', function($scope, user, localStorageService, $ionicLoading) {
-
-      // search first for a local cache for user lists
-      var localUsersList = false;
-      var cacheKey = 'cache.usersList';
-      if (localStorageService.get(cacheKey)) {
-        localUsersList = localStorageService.get(cacheKey);
-        // update view with our local datas
-        $scope.users = localUsersList;
-      }
-
-      // no local cache, display a loader while we are fetching
-      // datas to the webserver
-      if (!localUsersList) {
-        // Setup the loader
-        $ionicLoading.show({
-          content: 'Loading',
-          animation: 'fade-in',
-          noBackdrop: true,
-          maxWidth: 200,
-          showDelay: 0,
-          duration:250
-        });
-      }
+    .controller('usersListCtrl', ['$scope', '$ionicPopup', 'user', function($scope, $ionicPopup, user) {
 
       // query the server
-      user.query().$promise.then(
-
-        // success callback
-        function(users){
-          // set result to the cache
-          localStorageService.set(cacheKey, users);
+      user.query().$promise
+        .then(function(users) {
           $scope.users = users;
-          $ionicLoading.hide();
-        },
-
-        // error callback
-        function(response){
-          if (typeof response.data.error.message != 'undefined') {
-            alert("Failed to get users list server responds :" + response.data.error.message);
-          }
-          else {
-            alert("An error was encountered but no message error found.")
-          }
+        })
+        .catch(function(response){
+          $ionicPopup.alert({
+            title: 'Server error',
+            template: 'Fail to get users lists from server'
+          });
         }
       );
 
+
       // refresh user list when dragging down
       $scope.doRefresh = function() {
-        user.query().$promise.then(
-          // success callback
-          function(users) {
-            localStorageService.set(cacheKey, users);
+
+        user.query().$promise
+          .then(function(users) {
             $scope.users = users;
             $scope.$broadcast('scroll.refreshComplete');
-          },
-          // error callback
-          function(users) {
-            alert('server unreachable');
+          })
+          .catch(function(users) {
+            $ionicPopup.alert({
+              title: 'Server error',
+              template: 'Fail to get users lists from server'
+            });
+          })
+          .finally(function(){
             $scope.$broadcast('scroll.refreshComplete');
           });
+
       };
     }])
 

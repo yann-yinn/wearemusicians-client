@@ -13,7 +13,6 @@
   angular.module('app', [
       'ionic',
       //'app.routerUiDebug', // display ui-router events
-      'app.offlineApp',
       'app.config',
       'app.authentication',
       'app.user',

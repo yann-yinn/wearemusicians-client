@@ -7,12 +7,8 @@
    */
   angular.module('app.user')
 
-    .factory('user', ['$resource', 'config', function($resource, config) {
-      return $resource(config.serverUrl + '/api/users/:id', { id: '@id'}, {
-        get : {
-          method : 'GET'
-        }
-      });
+    .factory('user', ['$cachedResource', 'config', function($cachedResource, config) {
+      return $cachedResource('users', config.serverUrl + '/api/users/:id', { id: '@id'});
     }]);
 
 })();

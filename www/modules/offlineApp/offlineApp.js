@@ -10,14 +10,14 @@
   /**
    * Master module, calling all other modules.
    * @see https://docs.angularjs.org/guide/module
-   */
+
   angular.module('app.offlineApp', [
       'ngResource'
     ])
 
 
     .config(['$provide', function($provide) {
-      $provide.decorator('$resource', function($delegate) {
+      $provide.decorator('$http', function($delegate) {
         return $delegate;
       });
 
@@ -25,5 +25,5 @@
     }]);
 
 
-
+   */
 })();

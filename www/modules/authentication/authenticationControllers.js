@@ -4,8 +4,8 @@
 
     // log a user to the server
     .controller('signInCtrl',
-      ['$rootScope', '$scope', 'authentication', '$state', 'localStorageService',
-       function($rootScope, $scope, authentication, $state, localStorageService) {
+      ['$rootScope', '$ionicHistory', '$scope', 'authentication', '$state', 'localStorageService', '$ionicPopup', '$timeout',
+       function($rootScope, $ionicHistory, $scope, authentication, $state, localStorageService, $ionicPopup, $timeout) {
 
          // try to get en email user already entered previously to
          // avoid him some typing.
@@ -26,8 +26,24 @@
            // log in user to the server
            authentication.signIn(user.email, user.password)
              .success(function (data, status, headers, config) {
-               // @FIXME dependance circulaire : cette route est définie par le module users.
-               alert("Welcome back " + data.name + '!');
+               var welcomePopup = $ionicPopup.alert({
+                 title: 'Welcome back',
+                 template: 'Nice to see you, '+  _.escape(data.name) + ' !',
+                 buttons: [
+                   {
+                     text: "You're welcome, Dude.",
+                     type : 'button-positive'
+                   }
+                 ]
+               });
+               $timeout(function() {
+                 welcomePopup.close(); //close the popup after 3 seconds for some reason
+               }, 4000);
+               //@TODO  dependance circulaire au module user
+               $ionicHistory.nextViewOptions({
+                 disableAnimate: true,
+                 disableBack: true
+               });
                $state.go('app.main.users');
              })
              .error(function(data, status, headers, config) {

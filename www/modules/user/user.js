@@ -13,7 +13,8 @@
     'pascalprecht.translate',
     'app.authentication', // authenticate to druken panda auth system
     'ngResource', // for REST services
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ngCachedResource'
   ]);
 
 })();
