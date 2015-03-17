@@ -26,7 +26,19 @@
              }, $state))
 
              .error(function(data, status, headers, config) {
-               alert(status);
+               var popup = $ionicPopup.alert({
+                 title: "We're so sorry ... ",
+                 template: 'But server is unreachable... Please check your internet connexion or try later.',
+                 buttons: [
+                   {
+                     text: "Grmblm ... okay ... ",
+                     type : 'button-positive'
+                   }
+                 ]
+               });
+               $timeout(function() {
+                 popup.close(); //close the popup after 3 seconds for some reason
+               }, 4000);
              });
 
          };
@@ -47,7 +59,7 @@
 
         me.$update().$promise.then(function() {
 
-        }); 
+        });
 
       };
 
