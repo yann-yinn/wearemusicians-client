@@ -69,7 +69,8 @@
           USER_SIGNUP_FORM_PASSWORD_LABEL: 'Password',
           USER_SIGNUP_FORM_PASSWORD_ERROR_REQUIRED: 'Password is required',
           USER_VIEW_USERS_LIST_TITLE: 'Users',
-          USER_VIEW_ME_TITLE: 'My account'
+          USER_VIEW_ME_TITLE: 'My account',
+          USER_VIEW_ME_EDIT_TITLE: 'Edit my informations'
         });
 
         $translateProvider.translations('fr', {
@@ -83,7 +84,8 @@
           USER_SIGNUP_FORM_PASSWORD_LABEL: 'Mot de passe',
           USER_SIGNUP_FORM_PASSWORD_ERROR_REQUIRED: 'Le mot de passe est requis',
           USER_VIEW_USERS_LIST_TITLE: 'Utilisateurs',
-          USER_VIEW_ME_TITLE: 'Mon profil'
+          USER_VIEW_ME_TITLE: 'Mon profil',
+          USER_VIEW_ME_EDIT_TITLE: 'Editer mes informations'
         });
 
       }]);

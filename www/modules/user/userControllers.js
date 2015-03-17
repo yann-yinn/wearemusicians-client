@@ -33,21 +33,23 @@
 
        }])
 
-    .controller('meFormCtrl', ['$scope', 'authentication', 'user', '$state', function($scope, authentication, user, $state) {
+    .controller('meFormCtrl', ['$scope','$ionicPopup', 'authentication', 'user', '$state', function($scope, $ionicPopup, authentication, user, $state) {
 
       // get current user datas from local storage.
       var authDatas = authentication.isAuthenticated();
 
       // get full user object from server.
-      $scope.user = user.get({id: authDatas.id});
+      user.get({id: authDatas.id}).$promise.then(function(me) {
+        $scope.me = me;
+      });
 
-      $scope.updateUser = function(updatedUser) {
-        user.save(updatedUser);
+      $scope.updateUser = function(me) {
+
+        me.$update().$promise.then(function() {
+
+        }); 
+
       };
-
-      $scope.cancelEdition = function() {
-        $state.go('app.main.me');
-      }
 
     }])
 
@@ -99,7 +101,6 @@
           });
         }
       );
-
 
       // refresh user list when dragging down
       $scope.doRefresh = function() {

@@ -1,4 +1,4 @@
-<ion-view view-title="{{'USER_VIEW_ME_TITLE' | translate }}" ng-controller="meFormCtrl">
+<ion-view view-title="{{'USER_VIEW_ME_EDIT_TITLE' | translate }}" ng-controller="meFormCtrl">
 
     <ion-content>
 
@@ -14,7 +14,7 @@
                     <span class="input-label">{{'USER_SIGNUP_FORM_EMAIL_LABEL' | translate}}</span>
                     <input
                             type="email"
-                            ng-model="user.email"
+                            ng-model="me.email"
                             name="email"
                             required>
                 </label>
@@ -25,7 +25,7 @@
                     <span class="input-label">{{'USER_SIGNUP_FORM_NAME_LABEL' | translate}}</span>
                     <input
                             type="text"
-                            ng-model="user.name"
+                            ng-model="me.name"
                             name="name"
                             required>
                 </label>
@@ -41,7 +41,7 @@
                         class="button button-block button-positive"
                         type="submit"
                         ng-disabled="accountEditForm.$invalid"
-                        ng-click="updateUser(user)"
+                        ng-click="updateUser(me)"
                         value="{{'USER_EDIT_PROFILE_BUTTON' | translate}}">
 
             </div>
@@ -50,7 +50,7 @@
                 <input
                         class="button button-block button-assertive"
                         type="submit"
-                        ng-click="cancelEdition(user)"
+                        ui-sref="app.main.me"
                         value="{{'CANCEL_BUTTON' | translate}}">
 
             </div>
