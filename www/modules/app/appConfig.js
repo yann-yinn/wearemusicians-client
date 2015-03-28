@@ -50,6 +50,7 @@
 
           // Allow loading from soundcloud domain.  Notice the difference between * and **.
           'https://*.soundcloud.com/**',
+          'http://localhost/**',
 
           // Allow access to our server
           config.serverUrl + '/**'

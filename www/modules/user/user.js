@@ -14,7 +14,8 @@
     'app.authentication', // authenticate to druken panda auth system
     'ngResource', // for REST services
     'LocalStorageModule',
-    'ngCachedResource'
+    'ngCachedResource',
+    'ngCordova'
   ]);
 
 })();

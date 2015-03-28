@@ -46,11 +46,11 @@
           function (event, toState, toParams, fromState, fromParams) {
             // if user is already authenticated, skip all onboarding screens
             if(authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === 0)) {
-              $location.path('users');
+              //$location.path('users');
             }
             // if user is not authenticatated, redirect him to onboard screens
             if (!authentication.isAuthenticated() && (toState.name.indexOf('app.onboard') === -1)) {
-              $location.path('onboard/home');
+              //$location.path('onboard/home');
             }
 
           });
